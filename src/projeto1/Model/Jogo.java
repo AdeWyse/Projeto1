@@ -11,21 +11,37 @@ package projeto1.Model;
 public class Jogo extends Midia{
     
     float horasJogadas;
+    boolean foiHistoriaTerminada;
+    boolean foiZerado;
     
-    public Jogo (String titulo, String genero, int ranking, float horasJogadas){
+    public Jogo (String titulo, String genero, int ranking, float horasJogadas, boolean foiHistoriaTerminada, boolean foiZerado){
         super(titulo,genero,ranking);
         this.setHorasJogadas(horasJogadas);
+        this.setFoiHistoriaTerminada(foiHistoriaTerminada);
+        this.setFoiZerado(foiZerado);
     }
-    
-    
     
     public void setHorasJogadas(float horasJogadas){
         this.horasJogadas = horasJogadas;
     }
     
-   
+    public void setFoiHistoriaTerminada(boolean foiTerminada){
+        this.foiHistoriaTerminada = foiTerminada;
+    }
     
-    public  float getFoiAssistido(boolean foiAssistido){
+    public void setFoiZerado(boolean foiZeradd){
+        this.foiZerado = foiZerado;
+    }
+    
+    public  float getHorasJogadas(){
         return this.horasJogadas;
+    }
+    
+    public boolean getFoiHistoriaTerminada(){
+        return this.foiHistoriaTerminada;
+    }
+    
+     public boolean getFoiZerado(){
+        return this.foiZerado;
     }
 }

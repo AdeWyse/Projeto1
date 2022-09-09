@@ -26,21 +26,229 @@ public class JanelaJogo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        NovoDialogue = new javax.swing.JDialog();
+        rankingSlider = new javax.swing.JSlider();
+        rankingValueLabel = new javax.swing.JLabel();
+        tituloLabel = new javax.swing.JLabel();
+        criarButton = new javax.swing.JButton();
+        rankingLabel = new javax.swing.JLabel();
+        dialogueTitle = new javax.swing.JLabel();
+        generoLabel = new javax.swing.JLabel();
+        foiTerminadaLabel = new javax.swing.JLabel();
+        foiTerminadaCheckbox = new javax.swing.JCheckBox();
+        tituloTextField = new javax.swing.JTextField();
+        generoTextField1 = new javax.swing.JTextField();
+        horasJogadasLabel = new javax.swing.JLabel();
+        horasJogadasSlider = new javax.swing.JSlider();
+        rankingValueLabel1 = new javax.swing.JLabel();
+        foiZeradoLabel1 = new javax.swing.JLabel();
+        foiZeradoCheckbox = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        novoButton = new javax.swing.JButton();
+        editarButton = new javax.swing.JButton();
+
+        rankingSlider.setMaximum(5);
+
+        rankingValueLabel.setText("jLabel2");
+
+        tituloLabel.setText("Titulo");
+
+        criarButton.setText("Criar");
+        criarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                criarButtonActionPerformed(evt);
+            }
+        });
+
+        rankingLabel.setText("Ranking");
+
+        dialogueTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        dialogueTitle.setText("jLabel2");
+
+        generoLabel.setText("Genêro");
+
+        foiTerminadaLabel.setText("Historia terminada?");
+
+        horasJogadasLabel.setText("Horas Jogadas");
+
+        horasJogadasSlider.setMaximum(5);
+
+        rankingValueLabel1.setText("jLabel2");
+
+        foiZeradoLabel1.setText("Historia terminada?");
+
+        javax.swing.GroupLayout NovoDialogueLayout = new javax.swing.GroupLayout(NovoDialogue.getContentPane());
+        NovoDialogue.getContentPane().setLayout(NovoDialogueLayout);
+        NovoDialogueLayout.setHorizontalGroup(
+            NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                                .addComponent(foiTerminadaLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(foiTerminadaCheckbox))
+                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                                .addComponent(generoLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                                .addComponent(rankingLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rankingValueLabel))
+                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                                .addComponent(tituloLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                                .addComponent(horasJogadasLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(horasJogadasSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rankingValueLabel1))
+                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                                .addComponent(foiZeradoLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(foiZeradoCheckbox))))
+                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(dialogueTitle))
+                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(criarButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        NovoDialogueLayout.setVerticalGroup(
+            NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(dialogueTitle)
+                .addGap(18, 18, 18)
+                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tituloLabel)
+                            .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(generoLabel)
+                            .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rankingLabel)
+                            .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(horasJogadasLabel)
+                            .addComponent(horasJogadasSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+                        .addComponent(rankingValueLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rankingValueLabel1)))
+                .addGap(18, 18, 18)
+                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(foiTerminadaLabel)
+                    .addComponent(foiTerminadaCheckbox))
+                .addGap(18, 18, 18)
+                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(foiZeradoLabel1)
+                    .addComponent(foiZeradoCheckbox))
+                .addGap(18, 18, 18)
+                .addComponent(criarButton)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Jogos");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Titulo", "Genêro", "Ranking", "Horas jogadas", "Histporia completa", "Zerado"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Boolean.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        novoButton.setText("Novo");
+        novoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                novoButtonActionPerformed(evt);
+            }
+        });
+
+        editarButton.setText("Editar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(novoButton)
+                        .addGap(79, 79, 79)
+                        .addComponent(editarButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(novoButton)
+                    .addComponent(editarButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed
+
+        NovoDialogue.setVisible(true);
+    }//GEN-LAST:event_novoButtonActionPerformed
+
+    private void criarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarButtonActionPerformed
+        //Criar novo
+        NovoDialogue.setVisible(false);
+
+    }//GEN-LAST:event_criarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +286,27 @@ public class JanelaJogo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog NovoDialogue;
+    private javax.swing.JButton criarButton;
+    private javax.swing.JLabel dialogueTitle;
+    private javax.swing.JButton editarButton;
+    private javax.swing.JCheckBox foiTerminadaCheckbox;
+    private javax.swing.JLabel foiTerminadaLabel;
+    private javax.swing.JCheckBox foiZeradoCheckbox;
+    private javax.swing.JLabel foiZeradoLabel1;
+    private javax.swing.JLabel generoLabel;
+    private javax.swing.JTextField generoTextField1;
+    private javax.swing.JLabel horasJogadasLabel;
+    private javax.swing.JSlider horasJogadasSlider;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton novoButton;
+    private javax.swing.JLabel rankingLabel;
+    private javax.swing.JSlider rankingSlider;
+    private javax.swing.JLabel rankingValueLabel;
+    private javax.swing.JLabel rankingValueLabel1;
+    private javax.swing.JLabel tituloLabel;
+    private javax.swing.JTextField tituloTextField;
     // End of variables declaration//GEN-END:variables
 }

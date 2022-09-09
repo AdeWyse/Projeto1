@@ -4,18 +4,24 @@
  */
 package View;
 
+import Controller.FilmeController;
+import java.io.IOException;
+
 /**
  *
  * @author UTFPR
  */
 public class JanelaFilme extends javax.swing.JFrame {
 
+    FilmeController filmeController;
+
     /**
      * Creates new form JanelaFilme
      */
     public JanelaFilme() {
         initComponents();
-        
+        filmeController = new FilmeController();
+
     }
 
     /**
@@ -215,14 +221,19 @@ public class JanelaFilme extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed
-      
-       NovoDialogue.setVisible(true);
+
+        NovoDialogue.setVisible(true);
     }//GEN-LAST:event_novoButtonActionPerformed
 
     private void criarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarButtonActionPerformed
-        //Criar novo
+        try {
+            filmeController.Escrever();
+
+        } catch (IOException e) {
+
+        }
         NovoDialogue.setVisible(false);
-        
+
     }//GEN-LAST:event_criarButtonActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
