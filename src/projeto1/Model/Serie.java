@@ -9,10 +9,10 @@ package projeto1.Model;
  * @author UTFPR
  */
 public class Serie extends Midia{
-    int numEpisodios;
-    int numEpisodiosAssistidos;
+    Integer numEpisodios;
+    Integer numEpisodiosAssistidos;
     
-    public Serie(String titulo, String genero, int ranking, int numEpisodios, int numEpisodiosAssistidos){
+    public Serie(String titulo, String genero, int ranking, Integer numEpisodios, Integer numEpisodiosAssistidos){
         super(titulo,genero,ranking);
         this.setNumEpisodios(numEpisodios);
         this.setNumEpisodiosAssistidos(numEpisodiosAssistidos);
@@ -22,7 +22,7 @@ public class Serie extends Midia{
         return numEpisodios;
     }
 
-    public void setNumEpisodios(int numEpisodios) {
+    public void setNumEpisodios(Integer numEpisodios) {
         this.numEpisodios = numEpisodios;
     }
 
@@ -30,8 +30,13 @@ public class Serie extends Midia{
         return numEpisodiosAssistidos;
     }
 
-    public void setNumEpisodiosAssistidos(int numEpisodiosAssistidos) {
+    public void setNumEpisodiosAssistidos(Integer numEpisodiosAssistidos) {
         this.numEpisodiosAssistidos = numEpisodiosAssistidos;
+    }
+    
+    public String toString(){
+        String serie = this.titulo + "," + this.genero + "," + this.ranking.toString() + "," + this.numEpisodios + "," + this.numEpisodiosAssistidos;
+        return serie;
     }
     
 }

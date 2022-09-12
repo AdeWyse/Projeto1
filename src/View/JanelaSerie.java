@@ -4,6 +4,11 @@
  */
 package View;
 
+import Controller.FilmeController;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import projeto1.Model.Serie;
+
 /**
  *
  * @author UTFPR
@@ -15,6 +20,14 @@ public class JanelaSerie extends javax.swing.JFrame {
      */
     public JanelaSerie() {
         initComponents();
+        serieController = new SerieController(tabela);
+        rankingSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+               Integer sliderValue =  rankingSlider.getValue();
+               rankingValueLabel.setText(sliderValue.toString());
+            }
+        });
     }
 
     /**
@@ -38,15 +51,16 @@ public class JanelaSerie extends javax.swing.JFrame {
         generoTextField1 = new javax.swing.JTextField();
         numEpisodesLabel = new javax.swing.JLabel();
         assistidosLabel = new javax.swing.JLabel();
-        rankingSlider1 = new javax.swing.JSlider();
-        rankingValueLabel1 = new javax.swing.JLabel();
+        rankingSlider = new javax.swing.JSlider();
+        rankingValueLabel = new javax.swing.JLabel();
         assistidosSlider = new javax.swing.JSlider();
         assistidosValue = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        novoButton = new javax.swing.JButton();
         editarButton = new javax.swing.JButton();
+        deletarButton = new javax.swing.JButton();
+        novoButton = new javax.swing.JButton();
 
         NovoDialogue.setMinimumSize(new java.awt.Dimension(400, 479));
 
@@ -75,9 +89,9 @@ public class JanelaSerie extends javax.swing.JFrame {
 
         assistidosLabel.setText("Episódios assistidos");
 
-        rankingSlider1.setMaximum(5);
+        rankingSlider.setMaximum(5);
 
-        rankingValueLabel1.setText("jLabel2");
+        rankingValueLabel.setText("jLabel2");
 
         assistidosSlider.setMaximum(200);
 
@@ -115,9 +129,9 @@ public class JanelaSerie extends javax.swing.JFrame {
                             .addComponent(rankingLabel)
                             .addGroup(NovoDialogueLayout.createSequentialGroup()
                                 .addGap(61, 61, 61)
-                                .addComponent(rankingSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(rankingValueLabel1))))
+                                .addComponent(rankingValueLabel))))
                     .addGroup(NovoDialogueLayout.createSequentialGroup()
                         .addGap(175, 175, 175)
                         .addComponent(dialogueTitle))
@@ -142,8 +156,8 @@ public class JanelaSerie extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rankingLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rankingSlider1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rankingValueLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(rankingSlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rankingValueLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(26, 26, 26)
                 .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(assistidosLabel)
@@ -172,10 +186,10 @@ public class JanelaSerie extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Titulo", "Genêro", "Ranking", "Num episódios", "Episódios assistidos"
+                "Titulo", "Genêro", "Ranking", "Episódios", "Assistidos"
             }
         ) {
             Class[] types = new Class [] {
@@ -195,14 +209,26 @@ public class JanelaSerie extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        editarButton.setText("Editar");
+        editarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarButtonActionPerformed(evt);
+            }
+        });
+
+        deletarButton.setText("Deletar");
+        deletarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletarButtonActionPerformed(evt);
+            }
+        });
+
         novoButton.setText("Novo");
         novoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 novoButtonActionPerformed(evt);
             }
         });
-
-        editarButton.setText("Editar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,14 +240,21 @@ public class JanelaSerie extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(novoButton)
-                        .addGap(79, 79, 79)
-                        .addComponent(editarButton))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(novoButton)
+                        .addGap(79, 79, 79)
+                        .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(deletarButton)
+                        .addGap(12, 12, 12)))
+                .addGap(91, 91, 91))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,26 +263,46 @@ public class JanelaSerie extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
+                .addComponent(deletarButton)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(novoButton)
                     .addComponent(editarButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed
-
-        NovoDialogue.setVisible(true);
-    }//GEN-LAST:event_novoButtonActionPerformed
 
     private void criarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarButtonActionPerformed
         //Criar novo
         NovoDialogue.setVisible(false);
 
     }//GEN-LAST:event_criarButtonActionPerformed
+
+    private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
+        dialogueTitle.setText("Editar");
+        dialogueButton.setText("Editar");
+        Serie serieEditar = serieController.loadEdit();
+        tituloTextField.setText(filmeEditar.getTitulo());
+        generoTextField1.setText(filmeEditar.getGenero());
+        rankingSlider.setValue(filmeEditar.getRanking());
+        foiAssistidoCheckbox.setSelected(filmeEditar.getFoiAssistido());
+        NovoDialogue.setVisible(true);
+    }//GEN-LAST:event_editarButtonActionPerformed
+
+    private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
+        filmeController.Remove();
+    }//GEN-LAST:event_deletarButtonActionPerformed
+
+    private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed
+
+        dialogueTitle.setText("Novo");
+        dialogueButton.setText("Novo");
+
+        NovoDialogue.setVisible(true);
+    }//GEN-LAST:event_novoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,6 +345,7 @@ public class JanelaSerie extends javax.swing.JFrame {
     private javax.swing.JSlider assistidosSlider;
     private javax.swing.JLabel assistidosValue;
     private javax.swing.JButton criarButton;
+    private javax.swing.JButton deletarButton;
     private javax.swing.JLabel dialogueTitle;
     private javax.swing.JButton editarButton;
     private javax.swing.JLabel generoLabel;
@@ -304,8 +358,8 @@ public class JanelaSerie extends javax.swing.JFrame {
     private javax.swing.JSlider numEpisodesSlider;
     private javax.swing.JLabel numEpisodiosValue;
     private javax.swing.JLabel rankingLabel;
-    private javax.swing.JSlider rankingSlider1;
-    private javax.swing.JLabel rankingValueLabel1;
+    private javax.swing.JSlider rankingSlider;
+    private javax.swing.JLabel rankingValueLabel;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JTextField tituloTextField;
     // End of variables declaration//GEN-END:variables

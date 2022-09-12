@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JDialog" name="NovoDialogue">
       <Properties>
@@ -44,9 +44,9 @@
                               <Component id="rankingLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="61" pref="61" max="-2" attributes="0"/>
-                                  <Component id="rankingSlider1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rankingSlider" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="rankingValueLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rankingValueLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -81,8 +81,8 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="rankingLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="rankingSlider1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="rankingValueLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="rankingSlider" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="rankingValueLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -170,12 +170,12 @@
             <Property name="text" type="java.lang.String" value="Epis&#xf3;dios assistidos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="rankingSlider1">
+        <Component class="javax.swing.JSlider" name="rankingSlider">
           <Properties>
             <Property name="maximum" type="int" value="5"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="rankingValueLabel1">
+        <Component class="javax.swing.JLabel" name="rankingValueLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
@@ -222,17 +222,27 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="novoButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                      <Component id="editarButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="426" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="15" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="novoButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="editarButton" min="-2" pref="97" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                      <Component id="deletarButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -243,12 +253,14 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="deletarButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="novoButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="editarButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -272,12 +284,12 @@
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="1">
+              <Table columnCount="5" rowCount="0">
                 <Column editable="false" title="Titulo" type="java.lang.String"/>
                 <Column editable="false" title="Gen&#xea;ro" type="java.lang.String"/>
                 <Column editable="false" title="Ranking" type="java.lang.Integer"/>
-                <Column editable="false" title="Num epis&#xf3;dios" type="java.lang.Integer"/>
-                <Column editable="false" title="Epis&#xf3;dios assistidos" type="java.lang.Integer"/>
+                <Column editable="false" title="Epis&#xf3;dios" type="java.lang.Integer"/>
+                <Column editable="false" title="Assistidos" type="java.lang.Integer"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -316,6 +328,22 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="editarButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Editar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editarButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="deletarButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Deletar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletarButtonActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="novoButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Novo"/>
@@ -323,11 +351,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novoButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="editarButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Editar"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
