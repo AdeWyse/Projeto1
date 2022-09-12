@@ -11,9 +11,9 @@ package projeto1.Model;
 public class Midia {
     String titulo;
     String genero;
-    int ranking;
+    Integer ranking;
     
-    public Midia(String titulo, String genero, int ranking){
+    public Midia(String titulo, String genero, Integer ranking){
         this.setTitulo(titulo);
         this.setGenero(genero);
         this.setRanking(ranking);
@@ -27,19 +27,20 @@ public class Midia {
         this.genero = genero;
     }
      
-    public void setRanking(int ranking){
+    public void setRanking(Integer ranking){
         this.ranking = ranking;
     }
     
-     public String getTitulo(String titulo){
+     public String getTitulo(){
         return this.titulo;
     }
     
-     public String getGenero(String genero){
+     public String getGenero(){
         return this.genero;
     }
      
-    public int getRanking(int ranking){
+    public Integer getRanking(){
         return this.ranking;
     }
+    
 }

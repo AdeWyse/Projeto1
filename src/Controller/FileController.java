@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import javax.swing.JFileChooser;
+import javax.swing.JTable;
 
 /**
  *
@@ -19,35 +19,41 @@ import javax.swing.JFileChooser;
 public abstract class FileController {
 
     protected File arquivo;
-    protected String conteudo;
     protected String arquivoPath;
     protected String arquivoNome;
+    protected JTable table;
 
+
+   // public abstract void Add();
+    
+   // public abstract void Remove();
+     
+  //  public abstract void Edit();
+    
+    public abstract void List(JTable table);
+    
     public abstract String ConverterParaString();
 
-    public abstract void ConverterDeString();
+    public abstract void ConverterDeString(String conteudo);
 
     public abstract void setArquivoNome();
 
-    public FileController() {
+    public FileController(JTable table) {
 
         setArquivoNome();
         getPath();
-        arquivo = new File(arquivoPath);
-        conteudo = "Teste";
+        arquivo = new File(arquivoPath+ "\\" + this.arquivoNome);
+        this.table = table;
     }
 
     public void getPath() {
-        JFileChooser chooser = new JFileChooser();
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        chooser.setAcceptAllFileFilterUsed(false);
-        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            File pastaSelecionada = chooser.getCurrentDirectory();
-            arquivoPath = pastaSelecionada.getAbsolutePath().toString() + this.arquivoNome;
-        }
+        String arquivoPathTemp = System.getProperty(("user.dir"));
+        arquivoPath = arquivoPathTemp + "\\src\\Arquivos";
+        
     }
 
     public String Ler() {
+        String conteudo = "";
         if (arquivo.exists()) {
             StringBuilder conteudoBuilder = new StringBuilder();
 
@@ -59,18 +65,29 @@ public abstract class FileController {
             } catch (IOException e) {
 
             }
-            this.conteudo = conteudoBuilder.toString();
+            conteudo = conteudoBuilder.toString();
         }
-
-        System.out.printf(this.conteudo);
-        return this.conteudo;
+        return conteudo;
     }
 
-    public void Escrever()
+    public void Escrever(String conteudo)
             throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo.getName(), true));
-        writer.append(this.conteudo);
+        if(!arquivo.exists()){
+            arquivo.createNewFile();
+        }
+        FileWriter fileWriter = new FileWriter(arquivo, false);
+        BufferedWriter writer = new BufferedWriter(fileWriter);
+        writer.append(conteudo);
         writer.close();
+    }
+    
+    public void EscreverListar(){
+        try{
+            Escrever(ConverterParaString());
+        }catch(IOException e){
+            System.out.println("Erro");
+        }
+         List(this.table);
     }
 
 }

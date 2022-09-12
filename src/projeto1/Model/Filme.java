@@ -11,7 +11,7 @@ package projeto1.Model;
 public class Filme extends Midia{
     boolean foiAssistido;
     
-    public Filme(String titulo, String genero, int ranking, boolean foiAssistido){
+    public Filme(String titulo, String genero, Integer ranking, boolean foiAssistido){
         super(titulo,genero,ranking);
         this.setFoiAssistido(foiAssistido);
     }
@@ -20,7 +20,12 @@ public class Filme extends Midia{
         this.foiAssistido = foiAssistido;
     }
     
-    public  boolean getFoiAssistido(boolean foiAssistido){
+    public  boolean getFoiAssistido(){
         return this.foiAssistido;
+    }
+    
+    public String toString(){
+        String filme = this.titulo + "," + this.genero + "," + this.ranking.toString() + "," + this.foiAssistido;
+        return filme;
     }
 }
