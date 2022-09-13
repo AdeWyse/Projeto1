@@ -6,7 +6,7 @@ package View;
 
 /**
  *
- * @author UTFPR
+ * @author adeli
  */
 public class JanelaPrincipal extends javax.swing.JFrame {
 
@@ -29,6 +29,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         filmesButton = new javax.swing.JButton();
         seriesButton = new javax.swing.JButton();
         jogosButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,8 +41,21 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
 
         seriesButton.setText("Séries");
+        seriesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seriesButtonActionPerformed(evt);
+            }
+        });
 
         jogosButton.setText("Jogos");
+        jogosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jogosButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("Gerenciador de Midias");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,29 +64,48 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(filmesButton)
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(seriesButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGap(109, 109, 109)
                 .addComponent(jogosButton)
                 .addGap(46, 46, 46))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
+                .addGap(59, 59, 59)
+                .addComponent(jLabel1)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(filmesButton)
                     .addComponent(seriesButton)
                     .addComponent(jogosButton))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void filmesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmesButtonActionPerformed
-        // TODO add your handling code here:
+        
+        JanelaFilme janelaFilme = new JanelaFilme();
+        janelaFilme.setVisible(true);
     }//GEN-LAST:event_filmesButtonActionPerformed
+
+    private void seriesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seriesButtonActionPerformed
+        JanelaSerie janelaSerie = new JanelaSerie();
+        janelaSerie.setVisible(true);
+    }//GEN-LAST:event_seriesButtonActionPerformed
+
+    private void jogosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogosButtonActionPerformed
+       JanelaJogo janelaJogo = new JanelaJogo();
+        janelaJogo.setVisible(true);
+        
+    }//GEN-LAST:event_jogosButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,6 +144,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton filmesButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jogosButton;
     private javax.swing.JButton seriesButton;
     // End of variables declaration//GEN-END:variables

@@ -8,10 +8,11 @@ package projeto1.Model;
  *
  * @author adeli
  */
-public class Midia {
+public abstract class Midia {
     String titulo;
     String genero;
     Integer ranking;
+    public abstract String toString();
     
     public Midia(String titulo, String genero, Integer ranking){
         this.setTitulo(titulo);

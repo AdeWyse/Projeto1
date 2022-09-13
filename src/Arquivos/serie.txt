@@ -1,4 +1,3 @@
 Poin,Teste,3,91,1
-Teste,Tee,2,127,79
 Poin,Tt,3,17,1
 Paton,Teste,3,1,190

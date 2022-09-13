@@ -57,7 +57,7 @@ public class JanelaSerie extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        NovoDialogue = new javax.swing.JDialog();
+        dialogue = new javax.swing.JDialog();
         numEpisodesSlider = new javax.swing.JSlider();
         numEpisodiosValue = new javax.swing.JLabel();
         tituloLabel = new javax.swing.JLabel();
@@ -79,8 +79,9 @@ public class JanelaSerie extends javax.swing.JFrame {
         editarButton = new javax.swing.JButton();
         deletarButton = new javax.swing.JButton();
         novoButton = new javax.swing.JButton();
+        voltarButton = new javax.swing.JButton();
 
-        NovoDialogue.setMinimumSize(new java.awt.Dimension(500, 360));
+        dialogue.setMinimumSize(new java.awt.Dimension(500, 360));
 
         numEpisodesSlider.setMaximum(200);
         numEpisodesSlider.setValue(0);
@@ -117,80 +118,80 @@ public class JanelaSerie extends javax.swing.JFrame {
 
         assistidosValue.setText("1");
 
-        javax.swing.GroupLayout NovoDialogueLayout = new javax.swing.GroupLayout(NovoDialogue.getContentPane());
-        NovoDialogue.getContentPane().setLayout(NovoDialogueLayout);
-        NovoDialogueLayout.setHorizontalGroup(
-            NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(NovoDialogueLayout.createSequentialGroup()
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+        javax.swing.GroupLayout dialogueLayout = new javax.swing.GroupLayout(dialogue.getContentPane());
+        dialogue.getContentPane().setLayout(dialogueLayout);
+        dialogueLayout.setHorizontalGroup(
+            dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogueLayout.createSequentialGroup()
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogueLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dialogueLayout.createSequentialGroup()
                                 .addComponent(generoLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                            .addGroup(dialogueLayout.createSequentialGroup()
                                 .addComponent(tituloLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(rankingLabel)
-                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                            .addGroup(dialogueLayout.createSequentialGroup()
                                 .addGap(61, 61, 61)
                                 .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(rankingValueLabel))
-                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                            .addGroup(dialogueLayout.createSequentialGroup()
                                 .addComponent(assistidosLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(assistidosSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(assistidosValue))
-                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                            .addGroup(dialogueLayout.createSequentialGroup()
                                 .addComponent(numEpisodesLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(numEpisodesSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(numEpisodiosValue))))
-                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+                    .addGroup(dialogueLayout.createSequentialGroup()
                         .addGap(175, 175, 175)
                         .addComponent(dialogueTitle))
-                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+                    .addGroup(dialogueLayout.createSequentialGroup()
                         .addGap(176, 176, 176)
                         .addComponent(dialogueButton)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
-        NovoDialogueLayout.setVerticalGroup(
-            NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(NovoDialogueLayout.createSequentialGroup()
+        dialogueLayout.setVerticalGroup(
+            dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogueLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(dialogueTitle)
                 .addGap(18, 18, 18)
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tituloLabel)
                     .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generoLabel)
                     .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rankingLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(rankingSlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rankingValueLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numEpisodesLabel)
-                    .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(NovoDialogueLayout.createSequentialGroup()
+                    .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(dialogueLayout.createSequentialGroup()
                             .addComponent(numEpisodesSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(8, 8, 8))
                         .addComponent(numEpisodiosValue)))
                 .addGap(18, 18, 18)
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(assistidosLabel)
-                    .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NovoDialogueLayout.createSequentialGroup()
+                    .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogueLayout.createSequentialGroup()
                             .addComponent(assistidosSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(4, 4, 4))
                         .addComponent(assistidosValue, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -236,6 +237,8 @@ public class JanelaSerie extends javax.swing.JFrame {
             }
         });
 
+        deletarButton.setBackground(new java.awt.Color(220, 20, 60));
+        deletarButton.setForeground(new java.awt.Color(255, 255, 255));
         deletarButton.setText("Deletar");
         deletarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,15 +253,26 @@ public class JanelaSerie extends javax.swing.JFrame {
             }
         });
 
+        voltarButton.setBackground(new java.awt.Color(220, 20, 60));
+        voltarButton.setForeground(new java.awt.Color(255, 255, 255));
+        voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(voltarButton))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -280,7 +294,9 @@ public class JanelaSerie extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(voltarButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -311,7 +327,7 @@ public class JanelaSerie extends javax.swing.JFrame {
         }else{
             serieController.Edit(serie);
         }
-        NovoDialogue.setVisible(false);
+        dialogue.setVisible(false);
 
     }//GEN-LAST:event_dialogueButtonActionPerformed
 
@@ -322,9 +338,9 @@ public class JanelaSerie extends javax.swing.JFrame {
         tituloTextField.setText(serieEditar.getTitulo());
         generoTextField1.setText(serieEditar.getGenero());
         rankingSlider.setValue(serieEditar.getRanking());
-        rankingSlider.setValue(serieEditar.getRanking());
-        rankingSlider.setValue(serieEditar.getRanking());
-        NovoDialogue.setVisible(true);
+        numEpisodesSlider.setValue(serieEditar.getNumEpisodios());
+        assistidosSlider.setValue(serieEditar.getNumEpisodiosAssistidos());
+        dialogue.setVisible(true);
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
@@ -335,9 +351,19 @@ public class JanelaSerie extends javax.swing.JFrame {
 
         dialogueTitle.setText("Novo");
         dialogueButton.setText("Novo");
-
-        NovoDialogue.setVisible(true);
+        tituloTextField.setText("");
+        generoTextField1.setText("");
+        rankingSlider.setValue(5);
+        numEpisodesSlider.setValue(1);
+        assistidosSlider.setValue(0);
+        dialogue.setVisible(true);
     }//GEN-LAST:event_novoButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
+        this.dispose();
+        janelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,11 +401,11 @@ public class JanelaSerie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog NovoDialogue;
     private javax.swing.JLabel assistidosLabel;
     private javax.swing.JSlider assistidosSlider;
     private javax.swing.JLabel assistidosValue;
     private javax.swing.JButton deletarButton;
+    private javax.swing.JDialog dialogue;
     private javax.swing.JButton dialogueButton;
     private javax.swing.JLabel dialogueTitle;
     private javax.swing.JButton editarButton;
@@ -397,5 +423,6 @@ public class JanelaSerie extends javax.swing.JFrame {
     private javax.swing.JTable tabela;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JTextField tituloTextField;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

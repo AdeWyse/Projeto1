@@ -43,7 +43,7 @@ public class JanelaFilme extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        NovoDialogue = new javax.swing.JFrame();
+        dialogue = new javax.swing.JFrame();
         rankingSlider = new javax.swing.JSlider();
         rankingValueLabel = new javax.swing.JLabel();
         tituloLabel = new javax.swing.JLabel();
@@ -61,8 +61,9 @@ public class JanelaFilme extends javax.swing.JFrame {
         novoButton = new javax.swing.JButton();
         editarButton = new javax.swing.JButton();
         deletarButton = new javax.swing.JButton();
+        voltarButton = new javax.swing.JButton();
 
-        NovoDialogue.setMinimumSize(new java.awt.Dimension(400, 479));
+        dialogue.setMinimumSize(new java.awt.Dimension(400, 479));
 
         rankingSlider.setMaximum(5);
 
@@ -86,63 +87,63 @@ public class JanelaFilme extends javax.swing.JFrame {
 
         foiAssistidoLabel.setText("Foi assistido?");
 
-        javax.swing.GroupLayout NovoDialogueLayout = new javax.swing.GroupLayout(NovoDialogue.getContentPane());
-        NovoDialogue.getContentPane().setLayout(NovoDialogueLayout);
-        NovoDialogueLayout.setHorizontalGroup(
-            NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(NovoDialogueLayout.createSequentialGroup()
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+        javax.swing.GroupLayout dialogueLayout = new javax.swing.GroupLayout(dialogue.getContentPane());
+        dialogue.getContentPane().setLayout(dialogueLayout);
+        dialogueLayout.setHorizontalGroup(
+            dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogueLayout.createSequentialGroup()
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogueLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dialogueLayout.createSequentialGroup()
                                 .addComponent(foiAssistidoLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(foiAssistidoCheckbox))
-                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                            .addGroup(dialogueLayout.createSequentialGroup()
                                 .addComponent(generoLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                            .addGroup(dialogueLayout.createSequentialGroup()
                                 .addComponent(rankingLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(rankingValueLabel))
-                            .addGroup(NovoDialogueLayout.createSequentialGroup()
+                            .addGroup(dialogueLayout.createSequentialGroup()
                                 .addComponent(tituloLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+                    .addGroup(dialogueLayout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addComponent(dialogueButton))
-                    .addGroup(NovoDialogueLayout.createSequentialGroup()
+                    .addGroup(dialogueLayout.createSequentialGroup()
                         .addGap(175, 175, 175)
                         .addComponent(dialogueTitle)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
-        NovoDialogueLayout.setVerticalGroup(
-            NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(NovoDialogueLayout.createSequentialGroup()
+        dialogueLayout.setVerticalGroup(
+            dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogueLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(dialogueTitle)
                 .addGap(18, 18, 18)
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(NovoDialogueLayout.createSequentialGroup()
-                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(dialogueLayout.createSequentialGroup()
+                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tituloLabel)
                             .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(generoLabel)
                             .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(rankingLabel)
                             .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(rankingValueLabel))
                 .addGap(18, 18, 18)
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(foiAssistidoLabel)
                     .addComponent(foiAssistidoCheckbox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
@@ -200,6 +201,8 @@ public class JanelaFilme extends javax.swing.JFrame {
             }
         });
 
+        deletarButton.setBackground(new java.awt.Color(220, 20, 60));
+        deletarButton.setForeground(new java.awt.Color(255, 255, 255));
         deletarButton.setText("Deletar");
         deletarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,34 +210,48 @@ public class JanelaFilme extends javax.swing.JFrame {
             }
         });
 
+        voltarButton.setBackground(new java.awt.Color(220, 20, 60));
+        voltarButton.setForeground(new java.awt.Color(255, 255, 255));
+        voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(novoButton)
-                        .addGap(79, 79, 79)
-                        .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(deletarButton)
                 .addGap(94, 94, 94))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel1)
+                        .addGap(214, 214, 214)
+                        .addComponent(voltarButton))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(70, 70, 70)
+                            .addComponent(novoButton)
+                            .addGap(79, 79, 79)
+                            .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(voltarButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -253,8 +270,11 @@ public class JanelaFilme extends javax.swing.JFrame {
 
         dialogueTitle.setText("Novo");
         dialogueButton.setText("Novo");
-        
-        NovoDialogue.setVisible(true);
+        tituloTextField.setText("");
+        generoTextField1.setText("");
+        rankingSlider.setValue(5);
+        foiAssistidoCheckbox.setSelected(false);
+        dialogue.setVisible(true);
     }//GEN-LAST:event_novoButtonActionPerformed
 
     private void dialogueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dialogueButtonActionPerformed
@@ -273,7 +293,7 @@ public class JanelaFilme extends javax.swing.JFrame {
             filmeController.Edit(filme);
         }
 
-        NovoDialogue.setVisible(false);
+        dialogue.setVisible(false);
 
     }//GEN-LAST:event_dialogueButtonActionPerformed
 
@@ -288,13 +308,19 @@ public class JanelaFilme extends javax.swing.JFrame {
         tituloTextField.setText(filmeEditar.getTitulo());
         generoTextField1.setText(filmeEditar.getGenero());
         rankingSlider.setValue(filmeEditar.getRanking());
-       foiAssistidoCheckbox.setSelected(filmeEditar.getFoiAssistido());
-        NovoDialogue.setVisible(true);
+        foiAssistidoCheckbox.setSelected(filmeEditar.getFoiAssistido());
+        dialogue.setVisible(true);
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
         filmeController.Remove();
     }//GEN-LAST:event_deletarButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
+        this.dispose();
+        janelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,8 +363,8 @@ public class JanelaFilme extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFrame NovoDialogue;
     private javax.swing.JButton deletarButton;
+    private javax.swing.JFrame dialogue;
     private javax.swing.JButton dialogueButton;
     private javax.swing.JLabel dialogueTitle;
     private javax.swing.JButton editarButton;
@@ -355,5 +381,6 @@ public class JanelaFilme extends javax.swing.JFrame {
     private javax.swing.JTable tabela;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JTextField tituloTextField;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

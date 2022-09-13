@@ -10,18 +10,16 @@ package projeto1.Model;
  */
 public class Jogo extends Midia{
     
-    float horasJogadas;
+    Integer horasJogadas;
     boolean foiHistoriaTerminada;
-    boolean foiZerado;
     
-    public Jogo (String titulo, String genero, int ranking, float horasJogadas, boolean foiHistoriaTerminada, boolean foiZerado){
+    public Jogo (String titulo, String genero, Integer ranking, Integer horasJogadas, boolean foiHistoriaTerminada){
         super(titulo,genero,ranking);
         this.setHorasJogadas(horasJogadas);
         this.setFoiHistoriaTerminada(foiHistoriaTerminada);
-        this.setFoiZerado(foiZerado);
     }
     
-    public void setHorasJogadas(float horasJogadas){
+    public void setHorasJogadas(Integer horasJogadas){
         this.horasJogadas = horasJogadas;
     }
     
@@ -29,11 +27,7 @@ public class Jogo extends Midia{
         this.foiHistoriaTerminada = foiTerminada;
     }
     
-    public void setFoiZerado(boolean foiZeradd){
-        this.foiZerado = foiZerado;
-    }
-    
-    public  float getHorasJogadas(){
+    public  Integer getHorasJogadas(){
         return this.horasJogadas;
     }
     
@@ -41,7 +35,8 @@ public class Jogo extends Midia{
         return this.foiHistoriaTerminada;
     }
     
-     public boolean getFoiZerado(){
-        return this.foiZerado;
+    public String toString(){
+        String jogo = this.titulo + "," + this.genero + "," + this.ranking.toString() + "," + this.horasJogadas.toString() + "," + this.foiHistoriaTerminada;
+        return jogo;
     }
 }
