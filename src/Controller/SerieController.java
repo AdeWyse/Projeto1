@@ -7,7 +7,7 @@ package Controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-import projeto1.Model.Serie;
+import Model.Serie;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class SerieController extends FileController{
 
     ArrayList<Serie> serieList;
+    
     public SerieController(JTable table) {
         super(table);
         serieList = new ArrayList<Serie>();
@@ -77,7 +78,7 @@ public class SerieController extends FileController{
        EscreverListar();
     }
     
-   // @Override
+   @Override
     public void Remove(){
         Integer index = this.table.getSelectedRow();
         Serie serieRemover = serieList.get(index);

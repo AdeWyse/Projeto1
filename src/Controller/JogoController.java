@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import projeto1.Model.Jogo;
+import Model.Jogo;
 
 /**
  *
@@ -81,7 +81,7 @@ public class JogoController extends FileController{
        EscreverListar();
     }
     
-   // @Override
+   @Override
     public void Remove(){
         Integer index = this.table.getSelectedRow();
         Jogo jogoRemover = jogoList.get(index);

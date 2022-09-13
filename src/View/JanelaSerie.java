@@ -8,7 +8,7 @@ package View;
 import Controller.SerieController;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import projeto1.Model.Serie;
+import Model.Serie;
 
 /**
  *
@@ -83,6 +83,7 @@ public class JanelaSerie extends javax.swing.JFrame {
 
         dialogue.setMinimumSize(new java.awt.Dimension(500, 360));
 
+        numEpisodesSlider.setMajorTickSpacing(200);
         numEpisodesSlider.setMaximum(200);
         numEpisodesSlider.setValue(0);
 
@@ -184,7 +185,7 @@ public class JanelaSerie extends javax.swing.JFrame {
                     .addComponent(numEpisodesLabel)
                     .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(dialogueLayout.createSequentialGroup()
-                            .addComponent(numEpisodesSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numEpisodesSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGap(8, 8, 8))
                         .addComponent(numEpisodiosValue)))
                 .addGap(18, 18, 18)
@@ -197,7 +198,7 @@ public class JanelaSerie extends javax.swing.JFrame {
                         .addComponent(assistidosValue, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addGap(18, 18, 18)
                 .addComponent(dialogueButton)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

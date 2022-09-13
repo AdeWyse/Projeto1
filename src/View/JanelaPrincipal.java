@@ -26,10 +26,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPasswordField1 = new javax.swing.JPasswordField();
         filmesButton = new javax.swing.JButton();
         seriesButton = new javax.swing.JButton();
         jogosButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,16 +97,19 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         
         JanelaFilme janelaFilme = new JanelaFilme();
         janelaFilme.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_filmesButtonActionPerformed
 
     private void seriesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seriesButtonActionPerformed
         JanelaSerie janelaSerie = new JanelaSerie();
         janelaSerie.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_seriesButtonActionPerformed
 
     private void jogosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogosButtonActionPerformed
        JanelaJogo janelaJogo = new JanelaJogo();
         janelaJogo.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jogosButtonActionPerformed
 
@@ -145,6 +151,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton filmesButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JButton jogosButton;
     private javax.swing.JButton seriesButton;
     // End of variables declaration//GEN-END:variables

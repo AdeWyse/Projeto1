@@ -26,7 +26,7 @@ public abstract class FileController {
 
    // public abstract void Add();
     
-   // public abstract void Remove();
+   public abstract void Remove();
      
   //  public abstract void Edit();
     

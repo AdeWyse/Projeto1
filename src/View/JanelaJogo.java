@@ -7,11 +7,11 @@ package View;
 import Controller.JogoController;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import projeto1.Model.Jogo;
+import Model.Jogo;
 
 /**
  *
- * @author UTFPR
+ * @author adeli
  */
 public class JanelaJogo extends javax.swing.JFrame {
 
@@ -74,7 +74,7 @@ public class JanelaJogo extends javax.swing.JFrame {
 
         rankingSlider.setMaximum(5);
 
-        rankingValueLabel.setText("jLabel2");
+        rankingValueLabel.setText("5");
 
         tituloLabel.setText("Titulo");
 
@@ -98,7 +98,7 @@ public class JanelaJogo extends javax.swing.JFrame {
 
         horasJogadasSlider.setMaximum(5);
 
-        horasJofadasValueLabel.setText("jLabel2");
+        horasJofadasValueLabel.setText("0");
 
         javax.swing.GroupLayout dialogueLayout = new javax.swing.GroupLayout(dialogue.getContentPane());
         dialogue.getContentPane().setLayout(dialogueLayout);

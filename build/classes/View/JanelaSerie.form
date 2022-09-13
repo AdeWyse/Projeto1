@@ -89,7 +89,7 @@
                       <Component id="numEpisodesLabel" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="numEpisodesSlider" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="numEpisodesSlider" alignment="1" max="32767" attributes="0"/>
                               <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                           </Group>
                           <Component id="numEpisodiosValue" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -108,7 +108,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="dialogueButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,6 +116,7 @@
       <SubComponents>
         <Component class="javax.swing.JSlider" name="numEpisodesSlider">
           <Properties>
+            <Property name="majorTickSpacing" type="int" value="200"/>
             <Property name="maximum" type="int" value="200"/>
             <Property name="value" type="int" value="0"/>
           </Properties>

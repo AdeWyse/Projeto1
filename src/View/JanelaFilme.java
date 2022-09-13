@@ -8,7 +8,7 @@ import Controller.FilmeController;
 import java.io.IOException;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import projeto1.Model.Filme;
+import Model.Filme;
 
 /**
  *

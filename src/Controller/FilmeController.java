@@ -7,7 +7,7 @@ package Controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-import projeto1.Model.Filme;
+import Model.Filme;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -80,7 +80,7 @@ public class FilmeController extends FileController{
        EscreverListar();
     }
     
-   // @Override
+   @Override
     public void Remove(){
         Integer index = this.table.getSelectedRow();
         Filme filmeRemover = filmeList.get(index);
