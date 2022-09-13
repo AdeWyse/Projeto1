@@ -4,7 +4,8 @@
  */
 package View;
 
-import Controller.FilmeController;
+
+import Controller.SerieController;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import projeto1.Model.Serie;
@@ -15,6 +16,7 @@ import projeto1.Model.Serie;
  */
 public class JanelaSerie extends javax.swing.JFrame {
 
+    SerieController serieController;
     /**
      * Creates new form JanelaSerie
      */
@@ -26,6 +28,22 @@ public class JanelaSerie extends javax.swing.JFrame {
             public void stateChanged(ChangeEvent e) {
                Integer sliderValue =  rankingSlider.getValue();
                rankingValueLabel.setText(sliderValue.toString());
+            }
+        });
+         numEpisodesSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+               Integer sliderValue =  numEpisodesSlider.getValue();
+               numEpisodiosValue.setText(sliderValue.toString());
+               assistidosSlider.setMaximum(sliderValue);
+            }
+        });
+         
+        assistidosSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+               Integer sliderValue =  assistidosSlider.getValue();
+               assistidosValue.setText(sliderValue.toString());
             }
         });
     }
@@ -43,7 +61,7 @@ public class JanelaSerie extends javax.swing.JFrame {
         numEpisodesSlider = new javax.swing.JSlider();
         numEpisodiosValue = new javax.swing.JLabel();
         tituloLabel = new javax.swing.JLabel();
-        criarButton = new javax.swing.JButton();
+        dialogueButton = new javax.swing.JButton();
         rankingLabel = new javax.swing.JLabel();
         dialogueTitle = new javax.swing.JLabel();
         generoLabel = new javax.swing.JLabel();
@@ -57,24 +75,24 @@ public class JanelaSerie extends javax.swing.JFrame {
         assistidosValue = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         editarButton = new javax.swing.JButton();
         deletarButton = new javax.swing.JButton();
         novoButton = new javax.swing.JButton();
 
-        NovoDialogue.setMinimumSize(new java.awt.Dimension(400, 479));
+        NovoDialogue.setMinimumSize(new java.awt.Dimension(500, 360));
 
         numEpisodesSlider.setMaximum(200);
-        numEpisodesSlider.setMinimum(1);
+        numEpisodesSlider.setValue(0);
 
-        numEpisodiosValue.setText("jLabel2");
+        numEpisodiosValue.setText("0");
 
         tituloLabel.setText("Titulo");
 
-        criarButton.setText("Criar");
-        criarButton.addActionListener(new java.awt.event.ActionListener() {
+        dialogueButton.setText("Criar");
+        dialogueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                criarButtonActionPerformed(evt);
+                dialogueButtonActionPerformed(evt);
             }
         });
 
@@ -91,11 +109,13 @@ public class JanelaSerie extends javax.swing.JFrame {
 
         rankingSlider.setMaximum(5);
 
-        rankingValueLabel.setText("jLabel2");
+        rankingValueLabel.setText("5");
 
         assistidosSlider.setMaximum(200);
+        assistidosSlider.setMinimum(1);
+        assistidosSlider.setValue(1);
 
-        assistidosValue.setText("jLabel2");
+        assistidosValue.setText("1");
 
         javax.swing.GroupLayout NovoDialogueLayout = new javax.swing.GroupLayout(NovoDialogue.getContentPane());
         NovoDialogue.getContentPane().setLayout(NovoDialogueLayout);
@@ -114,31 +134,31 @@ public class JanelaSerie extends javax.swing.JFrame {
                                 .addComponent(tituloLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rankingLabel)
                             .addGroup(NovoDialogueLayout.createSequentialGroup()
-                                .addComponent(numEpisodesLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(numEpisodesSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(61, 61, 61)
+                                .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(numEpisodiosValue))
+                                .addComponent(rankingValueLabel))
                             .addGroup(NovoDialogueLayout.createSequentialGroup()
                                 .addComponent(assistidosLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(assistidosSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(assistidosValue))
-                            .addComponent(rankingLabel)
                             .addGroup(NovoDialogueLayout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(numEpisodesLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(numEpisodesSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(rankingValueLabel))))
+                                .addComponent(numEpisodiosValue))))
                     .addGroup(NovoDialogueLayout.createSequentialGroup()
                         .addGap(175, 175, 175)
                         .addComponent(dialogueTitle))
                     .addGroup(NovoDialogueLayout.createSequentialGroup()
                         .addGap(176, 176, 176)
-                        .addComponent(criarButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(dialogueButton)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         NovoDialogueLayout.setVerticalGroup(
             NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,14 +178,6 @@ public class JanelaSerie extends javax.swing.JFrame {
                     .addComponent(rankingLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(rankingSlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rankingValueLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(26, 26, 26)
-                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(assistidosLabel)
-                    .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NovoDialogueLayout.createSequentialGroup()
-                            .addComponent(assistidosSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(4, 4, 4))
-                        .addComponent(assistidosValue, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addGap(18, 18, 18)
                 .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numEpisodesLabel)
@@ -174,9 +186,17 @@ public class JanelaSerie extends javax.swing.JFrame {
                             .addComponent(numEpisodesSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(8, 8, 8))
                         .addComponent(numEpisodiosValue)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(criarButton)
-                .addGap(21, 21, 21))
+                .addGap(18, 18, 18)
+                .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(assistidosLabel)
+                    .addGroup(NovoDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NovoDialogueLayout.createSequentialGroup()
+                            .addComponent(assistidosSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(4, 4, 4))
+                        .addComponent(assistidosValue, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGap(18, 18, 18)
+                .addComponent(dialogueButton)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -184,7 +204,7 @@ public class JanelaSerie extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Series");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -207,7 +227,7 @@ public class JanelaSerie extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabela);
 
         editarButton.setText("Editar");
         editarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -275,25 +295,40 @@ public class JanelaSerie extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void criarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarButtonActionPerformed
-        //Criar novo
+    private void dialogueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dialogueButtonActionPerformed
+        String titulo = tituloTextField.getText();
+        String genero = generoTextField1.getText();
+        int ranking = rankingSlider.getValue();
+        int numEpisodes= numEpisodesSlider.getValue();
+        int numAssistidos = assistidosSlider.getValue();
+        
+        Serie serie = new Serie(titulo,genero,ranking, numEpisodes, numAssistidos);
+
+                        
+        if(dialogueTitle.getText() == "Novo"){
+            serieController.Add(serie);
+
+        }else{
+            serieController.Edit(serie);
+        }
         NovoDialogue.setVisible(false);
 
-    }//GEN-LAST:event_criarButtonActionPerformed
+    }//GEN-LAST:event_dialogueButtonActionPerformed
 
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         dialogueTitle.setText("Editar");
         dialogueButton.setText("Editar");
         Serie serieEditar = serieController.loadEdit();
-        tituloTextField.setText(filmeEditar.getTitulo());
-        generoTextField1.setText(filmeEditar.getGenero());
-        rankingSlider.setValue(filmeEditar.getRanking());
-        foiAssistidoCheckbox.setSelected(filmeEditar.getFoiAssistido());
+        tituloTextField.setText(serieEditar.getTitulo());
+        generoTextField1.setText(serieEditar.getGenero());
+        rankingSlider.setValue(serieEditar.getRanking());
+        rankingSlider.setValue(serieEditar.getRanking());
+        rankingSlider.setValue(serieEditar.getRanking());
         NovoDialogue.setVisible(true);
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
-        filmeController.Remove();
+        serieController.Remove();
     }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed
@@ -344,15 +379,14 @@ public class JanelaSerie extends javax.swing.JFrame {
     private javax.swing.JLabel assistidosLabel;
     private javax.swing.JSlider assistidosSlider;
     private javax.swing.JLabel assistidosValue;
-    private javax.swing.JButton criarButton;
     private javax.swing.JButton deletarButton;
+    private javax.swing.JButton dialogueButton;
     private javax.swing.JLabel dialogueTitle;
     private javax.swing.JButton editarButton;
     private javax.swing.JLabel generoLabel;
     private javax.swing.JTextField generoTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton novoButton;
     private javax.swing.JLabel numEpisodesLabel;
     private javax.swing.JSlider numEpisodesSlider;
@@ -360,6 +394,7 @@ public class JanelaSerie extends javax.swing.JFrame {
     private javax.swing.JLabel rankingLabel;
     private javax.swing.JSlider rankingSlider;
     private javax.swing.JLabel rankingValueLabel;
+    private javax.swing.JTable tabela;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JTextField tituloTextField;
     // End of variables declaration//GEN-END:variables
