@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author UTFPR
+ * @author adeli
  */
 public class FilmeController extends FileController{
 

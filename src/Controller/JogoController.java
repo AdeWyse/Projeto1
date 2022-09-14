@@ -12,7 +12,7 @@ import Model.Jogo;
 
 /**
  *
- * @author UTFPR
+ * @author adeli
  */
 public class JogoController extends FileController{
     

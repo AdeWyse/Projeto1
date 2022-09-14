@@ -12,7 +12,7 @@ import Model.Serie;
 
 /**
  *
- * @author UTFPR
+ * @author adeli
  */
 public class JanelaSerie extends javax.swing.JFrame {
 

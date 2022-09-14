@@ -12,7 +12,7 @@ import Model.Filme;
 
 /**
  *
- * @author UTFPR
+ * @author adeli
  */
 public class JanelaFilme extends javax.swing.JFrame {
 
