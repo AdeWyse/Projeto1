@@ -13,7 +13,7 @@ import Model.Jogo;
  *
  * @author adeli
  */
-public class JanelaJogo extends javax.swing.JFrame {
+public class JanelaJogo extends janelaComponentes {
 
     JogoController jogoController;
     /**
@@ -22,20 +22,8 @@ public class JanelaJogo extends javax.swing.JFrame {
     public JanelaJogo() {
         initComponents();
         jogoController = new JogoController(tabela);
-        rankingSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-               Integer sliderValue =  rankingSlider.getValue();
-               rankingValueLabel.setText(sliderValue.toString());
-            }
-        });
-        horasJogadasSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-               Integer sliderValue =  horasJogadasSlider.getValue();
-               horasJofadasValueLabel.setText(sliderValue.toString());
-            }
-        });
+        SliderValueShow(rankingSlider, rankingValueLabel);
+        SliderValueShow(horasJogadasSlider, horasJofadasValueLabel);
     }
 
     /**
@@ -340,9 +328,7 @@ public class JanelaJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_novoButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-        JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
-        this.dispose();
-        janelaPrincipal.setVisible(true);
+        VoltarPrincipal();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     /**

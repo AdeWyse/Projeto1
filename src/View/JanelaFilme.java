@@ -14,7 +14,7 @@ import Model.Filme;
  *
  * @author adeli
  */
-public class JanelaFilme extends javax.swing.JFrame {
+public class JanelaFilme extends janelaComponentes {
 
     FilmeController filmeController;
 
@@ -24,13 +24,7 @@ public class JanelaFilme extends javax.swing.JFrame {
     public JanelaFilme() {
         initComponents();
         filmeController = new FilmeController(tabela);
-        rankingSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-               Integer sliderValue =  rankingSlider.getValue();
-               rankingValueLabel.setText(sliderValue.toString());
-            }
-        });
+         SliderValueShow(rankingSlider, rankingValueLabel);
 
     }
 
@@ -62,6 +56,8 @@ public class JanelaFilme extends javax.swing.JFrame {
         editarButton = new javax.swing.JButton();
         deletarButton = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
+        buscaInput = new javax.swing.JTextField();
+        buscaButton = new javax.swing.JButton();
 
         dialogue.setMinimumSize(new java.awt.Dimension(400, 479));
 
@@ -219,31 +215,38 @@ public class JanelaFilme extends javax.swing.JFrame {
             }
         });
 
+        buscaButton.setText("Buscar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(deletarButton)
-                .addGap(94, 94, 94))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jLabel1)
                         .addGap(214, 214, 214)
                         .addComponent(voltarButton))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(70, 70, 70)
-                            .addComponent(novoButton)
-                            .addGap(79, 79, 79)
-                            .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(228, 228, 228)
+                                .addComponent(deletarButton)
+                                .addGap(75, 75, 75))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(novoButton)
+                                .addGap(79, 79, 79)
+                                .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(buscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buscaButton)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,6 +255,10 @@ public class JanelaFilme extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(voltarButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscaButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -260,7 +267,7 @@ public class JanelaFilme extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(novoButton)
                     .addComponent(editarButton))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -317,9 +324,7 @@ public class JanelaFilme extends javax.swing.JFrame {
     }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-        JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
-        this.dispose();
-        janelaPrincipal.setVisible(true);
+        VoltarPrincipal();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     /**
@@ -363,6 +368,8 @@ public class JanelaFilme extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscaButton;
+    private javax.swing.JTextField buscaInput;
     private javax.swing.JButton deletarButton;
     private javax.swing.JFrame dialogue;
     private javax.swing.JButton dialogueButton;

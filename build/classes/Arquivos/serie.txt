@@ -1,3 +1,3 @@
 Poin,Teste,3,91,1
 Poin,Tt,3,17,1
-Paton,Teste,3,1,190
+Num,Teste,1,183,50

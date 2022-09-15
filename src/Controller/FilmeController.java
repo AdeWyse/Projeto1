@@ -120,5 +120,9 @@ public class FilmeController extends FileController{
         Integer index = this.table.getSelectedRow();
         return filmeList.get(index);
     }
+    
+    public void Pesquisar(String input){
+        //Pesquisa(input, filmeList);
+    }
         
 }

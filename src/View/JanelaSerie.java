@@ -6,15 +6,13 @@ package View;
 
 
 import Controller.SerieController;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import Model.Serie;
 
 /**
  *
  * @author adeli
  */
-public class JanelaSerie extends javax.swing.JFrame {
+public class JanelaSerie extends janelaComponentes {
 
     SerieController serieController;
     /**
@@ -23,29 +21,11 @@ public class JanelaSerie extends javax.swing.JFrame {
     public JanelaSerie() {
         initComponents();
         serieController = new SerieController(tabela);
-        rankingSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-               Integer sliderValue =  rankingSlider.getValue();
-               rankingValueLabel.setText(sliderValue.toString());
-            }
-        });
-         numEpisodesSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-               Integer sliderValue =  numEpisodesSlider.getValue();
-               numEpisodiosValue.setText(sliderValue.toString());
-               assistidosSlider.setMaximum(sliderValue);
-            }
-        });
-         
-        assistidosSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-               Integer sliderValue =  assistidosSlider.getValue();
-               assistidosValue.setText(sliderValue.toString());
-            }
-        });
+        SliderValueShow(rankingSlider, rankingValueLabel);
+        SliderValueShowWithLimit(numEpisodesSlider, numEpisodiosValue, assistidosSlider);
+        SliderValueShow(assistidosSlider, assistidosValue);
+        System.out.print(numEpisodesSlider.getValue());
+
     }
 
     /**
@@ -85,9 +65,9 @@ public class JanelaSerie extends javax.swing.JFrame {
 
         numEpisodesSlider.setMajorTickSpacing(200);
         numEpisodesSlider.setMaximum(200);
-        numEpisodesSlider.setValue(0);
+        numEpisodesSlider.setMinimum(1);
 
-        numEpisodiosValue.setText("0");
+        numEpisodiosValue.setText("1");
 
         tituloLabel.setText("Titulo");
 
@@ -113,11 +93,11 @@ public class JanelaSerie extends javax.swing.JFrame {
 
         rankingValueLabel.setText("5");
 
+        assistidosSlider.setMajorTickSpacing(200);
         assistidosSlider.setMaximum(200);
-        assistidosSlider.setMinimum(1);
-        assistidosSlider.setValue(1);
+        assistidosSlider.setValue(0);
 
-        assistidosValue.setText("1");
+        assistidosValue.setText("0");
 
         javax.swing.GroupLayout dialogueLayout = new javax.swing.GroupLayout(dialogue.getContentPane());
         dialogue.getContentPane().setLayout(dialogueLayout);
@@ -183,11 +163,10 @@ public class JanelaSerie extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numEpisodesLabel)
-                    .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(dialogueLayout.createSequentialGroup()
-                            .addComponent(numEpisodesSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(8, 8, 8))
-                        .addComponent(numEpisodiosValue)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogueLayout.createSequentialGroup()
+                        .addComponent(numEpisodesSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(8, 8, 8))
+                    .addComponent(numEpisodiosValue, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(assistidosLabel)
@@ -361,9 +340,7 @@ public class JanelaSerie extends javax.swing.JFrame {
     }//GEN-LAST:event_novoButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-        JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
-        this.dispose();
-        janelaPrincipal.setVisible(true);
+        VoltarPrincipal();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     /**

@@ -4,12 +4,14 @@
  */
 package Controller;
 
+import Model.Midia;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
@@ -63,7 +65,6 @@ public abstract class FileController {
                     conteudoBuilder.append(linhaAtual).append("\n");
                 }
             } catch (IOException e) {
-
             }
             conteudo = conteudoBuilder.toString();
         }
@@ -90,4 +91,11 @@ public abstract class FileController {
          List(this.table);
     }
 
+    public void Pesquisa(String name, ArrayList<Midia> midiaList){
+        for(int i = 0; i < midiaList.size(); i++){
+           if(midiaList.get(i).getTitulo().contains(name)){
+               this.table.setRowSelectionInterval(i-1, i);
+           }
+       }
+    }
 }
