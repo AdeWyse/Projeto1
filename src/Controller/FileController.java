@@ -4,14 +4,12 @@
  */
 package Controller;
 
-import Model.Midia;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
@@ -25,12 +23,8 @@ public abstract class FileController {
     protected String arquivoNome;
     protected JTable table;
 
-
-   // public abstract void Add();
     
    public abstract void Remove();
-     
-  //  public abstract void Edit();
     
     public abstract void List(JTable table);
     
@@ -53,7 +47,8 @@ public abstract class FileController {
     public void getPath() {
         String arquivoPathTemp = System.getProperty(("user.dir"));
         arquivoPath = arquivoPathTemp + "\\src\\Arquivos";
-        
+        //Seta o caminho do arquivo para a pasta Arquivos dentro do projeto, 
+        //o nome do arquio depois vem do controller especifico de cada classe
     }
 
     public String Ler() {
@@ -91,16 +86,5 @@ public abstract class FileController {
             System.out.println("Erro");
         }
          List(this.table);
-    }
-    
-   
-
-    public void Pesquisa(String name, ArrayList<Midia> midiaList){
-       
-        for(int i = 0; i < midiaList.size(); i++){
-           if(midiaList.get(i).getTitulo().contains(name)){
-               this.table.setRowSelectionInterval(i-1, i);
-           }
-       }
     }
 }
