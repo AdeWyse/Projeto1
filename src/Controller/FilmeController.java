@@ -4,10 +4,10 @@
  */
 package Controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import Model.Filme;
+import Model.Midia;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -121,8 +121,12 @@ public class FilmeController extends FileController{
         return filmeList.get(index);
     }
     
-    public void Pesquisar(String input){
-        //Pesquisa(input, filmeList);
+    public void Pesquisa(String name){
+        for(int i = 0; i <filmeList.size(); i++){
+           if(filmeList.get(i).getTitulo().contains(name)){
+               this.table.setRowSelectionInterval(i, i);
+               return;
+           }
+       }
     }
-        
 }

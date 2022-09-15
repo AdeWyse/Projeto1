@@ -123,5 +123,14 @@ public class JogoController extends FileController{
         Integer index = this.table.getSelectedRow();
         return jogoList.get(index);
     }
+    
+    public void Pesquisa(String name){
+        for(int i = 0; i <jogoList.size(); i++){
+           if(jogoList.get(i).getTitulo().contains(name)){
+               this.table.setRowSelectionInterval(i, i);
+               return;
+           }
+       }
+    }
         
 }

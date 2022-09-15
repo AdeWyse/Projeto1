@@ -216,6 +216,11 @@ public class JanelaFilme extends janelaComponentes {
         });
 
         buscaButton.setText("Buscar");
+        buscaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscaButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -326,6 +331,10 @@ public class JanelaFilme extends janelaComponentes {
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
         VoltarPrincipal();
     }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed
+        filmeController.Pesquisa(buscaInput.getText());
+    }//GEN-LAST:event_buscaButtonActionPerformed
 
     /**
      * @param args the command line arguments

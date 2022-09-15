@@ -39,6 +39,8 @@ public abstract class FileController {
     public abstract void ConverterDeString(String conteudo);
 
     public abstract void setArquivoNome();
+    
+     public abstract void Pesquisa(String nome);
 
     public FileController(JTable table) {
 
@@ -90,8 +92,11 @@ public abstract class FileController {
         }
          List(this.table);
     }
+    
+   
 
     public void Pesquisa(String name, ArrayList<Midia> midiaList){
+       
         for(int i = 0; i < midiaList.size(); i++){
            if(midiaList.get(i).getTitulo().contains(name)){
                this.table.setRowSelectionInterval(i-1, i);

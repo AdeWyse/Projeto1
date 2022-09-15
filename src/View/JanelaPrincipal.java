@@ -58,7 +58,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Gerenciador de Midias");
+        jLabel1.setText("Gerenciador de Mídias");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

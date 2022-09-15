@@ -60,6 +60,8 @@ public class JanelaSerie extends janelaComponentes {
         deletarButton = new javax.swing.JButton();
         novoButton = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
+        buscaButton = new javax.swing.JButton();
+        buscaInput = new javax.swing.JTextField();
 
         dialogue.setMinimumSize(new java.awt.Dimension(500, 360));
 
@@ -242,33 +244,46 @@ public class JanelaSerie extends janelaComponentes {
             }
         });
 
+        buscaButton.setText("Buscar");
+        buscaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(271, 271, 271)
                         .addComponent(voltarButton))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(novoButton)
+                                        .addGap(79, 79, 79)
+                                        .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(164, 164, 164)
+                                        .addComponent(deletarButton)
+                                        .addGap(12, 12, 12)))
+                                .addGap(76, 76, 76))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(novoButton)
-                        .addGap(79, 79, 79)
-                        .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(deletarButton)
-                        .addGap(12, 12, 12)))
-                .addGap(91, 91, 91))
+                        .addContainerGap()
+                        .addComponent(buscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,6 +293,10 @@ public class JanelaSerie extends janelaComponentes {
                     .addComponent(jLabel1)
                     .addComponent(voltarButton))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscaButton))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(deletarButton)
@@ -285,7 +304,7 @@ public class JanelaSerie extends janelaComponentes {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(novoButton)
                     .addComponent(editarButton))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -343,6 +362,10 @@ public class JanelaSerie extends janelaComponentes {
         VoltarPrincipal();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
+    private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed
+        serieController.Pesquisa(buscaInput.getText());
+    }//GEN-LAST:event_buscaButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -382,6 +405,8 @@ public class JanelaSerie extends janelaComponentes {
     private javax.swing.JLabel assistidosLabel;
     private javax.swing.JSlider assistidosSlider;
     private javax.swing.JLabel assistidosValue;
+    private javax.swing.JButton buscaButton;
+    private javax.swing.JTextField buscaInput;
     private javax.swing.JButton deletarButton;
     private javax.swing.JDialog dialogue;
     private javax.swing.JButton dialogueButton;

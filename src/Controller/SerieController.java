@@ -121,4 +121,12 @@ public class SerieController extends FileController{
         return serieList.get(index);
     }
         
+    public void Pesquisa(String name){
+        for(int i = 0; i <serieList.size(); i++){
+           if(serieList.get(i).getTitulo().contains(name)){
+               this.table.setRowSelectionInterval(i, i);
+               return;
+           }
+       }
+    }
 }
