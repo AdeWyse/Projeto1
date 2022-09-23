@@ -86,7 +86,7 @@ public class JanelaJogo extends janelaComponentes {
 
         horasJogadasLabel.setText("Horas Jogadas");
 
-        horasJogadasSlider.setMaximum(5);
+        horasJogadasSlider.setMaximum(500);
 
         horasJofadasValueLabel.setText("0");
 

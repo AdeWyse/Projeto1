@@ -21,20 +21,13 @@ public abstract class FileController {
     protected File arquivo;
     protected String arquivoPath;
     protected String arquivoNome;
+    
     protected JTable table;
 
     
-   public abstract void Remove();
-    
-    public abstract void List(JTable table);
-    
-    public abstract String ConverterParaString();
-
-    public abstract void ConverterDeString(String conteudo);
-
     public abstract void setArquivoNome();
     
-     public abstract void Pesquisa(String nome);
+    
 
     public FileController(JTable table) {
 
@@ -42,6 +35,7 @@ public abstract class FileController {
         getPath();
         arquivo = new File(arquivoPath+ "\\" + this.arquivoNome);
         this.table = table;
+
     }
 
     public void getPath() {
@@ -51,40 +45,5 @@ public abstract class FileController {
         //o nome do arquio depois vem do controller especifico de cada classe
     }
 
-    public String Ler() {
-        String conteudo = "";
-        if (arquivo.exists()) {
-            StringBuilder conteudoBuilder = new StringBuilder();
-
-            try ( BufferedReader reader = new BufferedReader(new FileReader(arquivo.getPath()))) {
-                String linhaAtual;
-                while ((linhaAtual = reader.readLine()) != null) {
-                    conteudoBuilder.append(linhaAtual).append("\n");
-                }
-            } catch (IOException e) {
-            }
-            conteudo = conteudoBuilder.toString();
-        }
-        return conteudo;
-    }
-
-    public void Escrever(String conteudo)
-            throws IOException {
-        if(!arquivo.exists()){
-            arquivo.createNewFile();
-        }
-        FileWriter fileWriter = new FileWriter(arquivo, false);
-        BufferedWriter writer = new BufferedWriter(fileWriter);
-        writer.append(conteudo);
-        writer.close();
-    }
     
-    public void EscreverListar(){
-        try{
-            Escrever(ConverterParaString());
-        }catch(IOException e){
-            System.out.println("Erro");
-        }
-         List(this.table);
-    }
 }

@@ -14,7 +14,7 @@ import Model.Jogo;
  *
  * @author adeli
  */
-public class JogoController extends FileController{
+public class JogoController extends FileTextController{
     
     ArrayList<Jogo> jogoList;
     public JogoController(JTable table) {

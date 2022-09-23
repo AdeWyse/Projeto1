@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author adeli
  */
-public class SerieController extends FileController{
+public class SerieController extends FileTextController{
 
     ArrayList<Serie> serieList;
     

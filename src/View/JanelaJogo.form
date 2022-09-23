@@ -166,7 +166,7 @@
         </Component>
         <Component class="javax.swing.JSlider" name="horasJogadasSlider">
           <Properties>
-            <Property name="maximum" type="int" value="5"/>
+            <Property name="maximum" type="int" value="500"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="horasJofadasValueLabel">
