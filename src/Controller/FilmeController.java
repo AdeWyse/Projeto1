@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author adeli
  */
-public class FilmeController extends FileTextController{
+public class FilmeController extends FileBinaryController{
 
     ArrayList<Filme> filmeList;
     public FilmeController(JTable table) {
