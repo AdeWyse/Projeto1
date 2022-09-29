@@ -4,22 +4,24 @@
  */
 package Controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import Model.Serie;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import Model.Jogo;
 
 /**
  *
  * @author adeli
  */
-public class JogoController extends FileTextController{
+public class TextSerieController extends FileTextController{
+
+    ArrayList<Serie> serieList;
     
-    ArrayList<Jogo> jogoList;
-    public JogoController(JTable table) {
+    public TextSerieController(JTable table) {
         super(table);
-        jogoList = new ArrayList<Jogo>();
+        serieList = new ArrayList<Serie>();
         if(arquivo.exists()){
             List(this.table);
             ConverterDeString(Ler());
@@ -31,8 +33,8 @@ public class JogoController extends FileTextController{
     @Override
     public String ConverterParaString() {
         String converted = "";
-        for(int i= 0; i< jogoList.size(); i++){
-            converted = converted + jogoList.get(i).toString();
+        for(int i= 0; i< serieList.size(); i++){
+            converted = converted + serieList.get(i).toString();
                         converted = converted + "\n";
         }
         return converted;
@@ -43,8 +45,8 @@ public class JogoController extends FileTextController{
         String titulo;
         String genero;
         Integer ranking;
-        Integer horasJogadas;
-        boolean foiHistoriaTerminada;
+        Integer numEpisodios;
+        Integer numEpisodiosAssistidos;
         
         StringTokenizer tokenizer = new StringTokenizer(conteudo, "\n");
         
@@ -55,16 +57,11 @@ public class JogoController extends FileTextController{
             titulo = dados[0];
             genero = dados[1];
             ranking = Integer.valueOf(dados[2]);
-            horasJogadas = Integer.valueOf(dados[3]);
-            if(dados[4].equals("true")){
-
-                foiHistoriaTerminada = true;
-            }else{
-                foiHistoriaTerminada = false;
-            }
+            numEpisodios = Integer.valueOf(dados[3]);
+            numEpisodiosAssistidos = Integer.valueOf(dados[4]);
             
-            Jogo jogo = new Jogo(titulo, genero, ranking, horasJogadas, foiHistoriaTerminada);
-            jogoList.add(jogo);
+            Serie serie = new Serie(titulo, genero, ranking, numEpisodios, numEpisodiosAssistidos);
+            serieList.add(serie);
         }
         List(table);
         
@@ -72,20 +69,20 @@ public class JogoController extends FileTextController{
     
     @Override
     public void setArquivoNome(){
-        this.arquivoNome = "jogo.txt";
+        this.arquivoNome = "serie.txt";
     }
     
     // @override
-    public void Add(Jogo jogo){
-        jogoList.add(jogo);
+    public void Add(Serie serie){
+        serieList.add(serie);
        EscreverListar();
     }
     
    @Override
     public void Remove(){
         Integer index = this.table.getSelectedRow();
-        Jogo jogoRemover = jogoList.get(index);
-        jogoList.remove(jogoRemover);
+        Serie serieRemover = serieList.get(index);
+        serieList.remove(serieRemover);
         EscreverListar();
     }
     
@@ -94,43 +91,42 @@ public class JogoController extends FileTextController{
         
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        model.setRowCount(0);
-       for(int i = 0; i < jogoList.size(); i++){
-           String titulo = jogoList.get(i).getTitulo();
-           String genero = jogoList.get(i).getGenero();
-           Integer ranking = jogoList.get(i).getRanking();
-           Integer horasJogadas = jogoList.get(i).getHorasJogadas();
-           boolean foiHistoriaTerminada = jogoList.get(i).getFoiHistoriaTerminada();
+       for(int i = 0; i < serieList.size(); i++){
+           String titulo = serieList.get(i).getTitulo();
+           String genero = serieList.get(i).getGenero();
+           Integer ranking = serieList.get(i).getRanking();
+           Integer numEpisodios = serieList.get(i).getNumEpisodios();
+           Integer numEpisodiosAssistidos = serieList.get(i).getNumEpisodiosAssistidos();
            
-           Object[] data = {titulo, genero, ranking, horasJogadas, foiHistoriaTerminada};
+           Object[] data = {titulo, genero, ranking, numEpisodios, numEpisodiosAssistidos};
            
          model.addRow(data);
        }
     }
     
    // @Override
-    public void Edit(Jogo jogoEditar){
+    public void Edit(Serie serieEditar){
         Integer index = this.table.getSelectedRow();
-        jogoList.get(index).setTitulo(jogoEditar.getTitulo());
-        jogoList.get(index).setGenero(jogoEditar.getGenero());
-        jogoList.get(index).setRanking(jogoEditar.getRanking());
-        jogoList.get(index).setHorasJogadas(jogoEditar.getHorasJogadas());
-        jogoList.get(index).setFoiHistoriaTerminada(jogoEditar.getFoiHistoriaTerminada());
+        serieList.get(index).setTitulo(serieEditar.getTitulo());
+        serieList.get(index).setGenero(serieEditar.getGenero());
+        serieList.get(index).setRanking(serieEditar.getRanking());
+        serieList.get(index).setNumEpisodios(serieEditar.getNumEpisodios());
+        serieList.get(index).setNumEpisodiosAssistidos(serieEditar.getNumEpisodiosAssistidos());
         EscreverListar();
     }
     
     
-    public Jogo loadEdit(){
+    public Serie loadEdit(){
         Integer index = this.table.getSelectedRow();
-        return jogoList.get(index);
+        return serieList.get(index);
     }
-    
+        
     public void Pesquisa(String name){
-        for(int i = 0; i <jogoList.size(); i++){
-           if(jogoList.get(i).getTitulo().contains(name)){
+        for(int i = 0; i <serieList.size(); i++){
+           if(serieList.get(i).getTitulo().contains(name)){
                this.table.setRowSelectionInterval(i, i);
                return;
            }
        }
     }
-        
 }

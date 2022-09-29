@@ -5,7 +5,7 @@
 package View;
 
 
-import Controller.SerieController;
+import Controller.TextSerieController;
 import Model.Serie;
 
 /**
@@ -14,13 +14,13 @@ import Model.Serie;
  */
 public class JanelaSerie extends janelaComponentes {
 
-    SerieController serieController;
+    TextSerieController serieController;
     /**
      * Creates new form JanelaSerie
      */
     public JanelaSerie() {
         initComponents();
-        serieController = new SerieController(tabela);
+        serieController = new TextSerieController(tabela);
         SliderValueShow(rankingSlider, rankingValueLabel);
         SliderValueShowWithLimit(numEpisodesSlider, numEpisodiosValue, assistidosSlider);
         SliderValueShow(assistidosSlider, assistidosValue);

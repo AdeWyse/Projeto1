@@ -4,10 +4,10 @@
  */
 package Controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-import Model.Serie;
+import Model.Filme;
+import Model.Midia;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,13 +15,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author adeli
  */
-public class SerieController extends FileTextController{
+public class TextFilmeController extends FileTextController{
 
-    ArrayList<Serie> serieList;
-    
-    public SerieController(JTable table) {
+    ArrayList<Filme> filmeList;
+    public TextFilmeController(JTable table) {
         super(table);
-        serieList = new ArrayList<Serie>();
+        filmeList = new ArrayList<Filme>();
         if(arquivo.exists()){
             List(this.table);
             ConverterDeString(Ler());
@@ -33,8 +32,8 @@ public class SerieController extends FileTextController{
     @Override
     public String ConverterParaString() {
         String converted = "";
-        for(int i= 0; i< serieList.size(); i++){
-            converted = converted + serieList.get(i).toString();
+        for(int i= 0; i< filmeList.size(); i++){
+            converted = converted + filmeList.get(i).toString();
                         converted = converted + "\n";
         }
         return converted;
@@ -45,8 +44,7 @@ public class SerieController extends FileTextController{
         String titulo;
         String genero;
         Integer ranking;
-        Integer numEpisodios;
-        Integer numEpisodiosAssistidos;
+        boolean foiAssistido;
         
         StringTokenizer tokenizer = new StringTokenizer(conteudo, "\n");
         
@@ -57,11 +55,15 @@ public class SerieController extends FileTextController{
             titulo = dados[0];
             genero = dados[1];
             ranking = Integer.valueOf(dados[2]);
-            numEpisodios = Integer.valueOf(dados[3]);
-            numEpisodiosAssistidos = Integer.valueOf(dados[4]);
+            if(dados[3].equals("true")){
+
+                foiAssistido = true;
+            }else{
+                foiAssistido = false;
+            }
             
-            Serie serie = new Serie(titulo, genero, ranking, numEpisodios, numEpisodiosAssistidos);
-            serieList.add(serie);
+            Filme filme = new Filme(titulo, genero, ranking, foiAssistido);
+            filmeList.add(filme);
         }
         List(table);
         
@@ -69,20 +71,20 @@ public class SerieController extends FileTextController{
     
     @Override
     public void setArquivoNome(){
-        this.arquivoNome = "serie.txt";
+        this.arquivoNome = "filme.txt";
     }
     
     // @override
-    public void Add(Serie serie){
-        serieList.add(serie);
+    public void Add(Filme filme){
+        filmeList.add(filme);
        EscreverListar();
     }
     
    @Override
     public void Remove(){
         Integer index = this.table.getSelectedRow();
-        Serie serieRemover = serieList.get(index);
-        serieList.remove(serieRemover);
+        Filme filmeRemover = filmeList.get(index);
+        filmeList.remove(filmeRemover);
         EscreverListar();
     }
     
@@ -91,39 +93,37 @@ public class SerieController extends FileTextController{
         
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        model.setRowCount(0);
-       for(int i = 0; i < serieList.size(); i++){
-           String titulo = serieList.get(i).getTitulo();
-           String genero = serieList.get(i).getGenero();
-           Integer ranking = serieList.get(i).getRanking();
-           Integer numEpisodios = serieList.get(i).getNumEpisodios();
-           Integer numEpisodiosAssistidos = serieList.get(i).getNumEpisodiosAssistidos();
+       for(int i = 0; i < filmeList.size(); i++){
+           String titulo = filmeList.get(i).getTitulo();
+           String genero = filmeList.get(i).getGenero();
+           Integer ranking = filmeList.get(i).getRanking();
+           Boolean foiAssistido = filmeList.get(i).getFoiAssistido();
            
-           Object[] data = {titulo, genero, ranking, numEpisodios, numEpisodiosAssistidos};
+           Object[] data = {titulo, genero, ranking, foiAssistido};
            
          model.addRow(data);
        }
     }
     
    // @Override
-    public void Edit(Serie serieEditar){
+    public void Edit(Filme filmeEditar){
         Integer index = this.table.getSelectedRow();
-        serieList.get(index).setTitulo(serieEditar.getTitulo());
-        serieList.get(index).setGenero(serieEditar.getGenero());
-        serieList.get(index).setRanking(serieEditar.getRanking());
-        serieList.get(index).setNumEpisodios(serieEditar.getNumEpisodios());
-        serieList.get(index).setNumEpisodiosAssistidos(serieEditar.getNumEpisodiosAssistidos());
+        filmeList.get(index).setTitulo(filmeEditar.getTitulo());
+        filmeList.get(index).setGenero(filmeEditar.getGenero());
+        filmeList.get(index).setRanking(filmeEditar.getRanking());
+        filmeList.get(index).setFoiAssistido(filmeEditar.getFoiAssistido());
         EscreverListar();
     }
     
     
-    public Serie loadEdit(){
+    public Filme loadEdit(){
         Integer index = this.table.getSelectedRow();
-        return serieList.get(index);
+        return filmeList.get(index);
     }
-        
+    
     public void Pesquisa(String name){
-        for(int i = 0; i <serieList.size(); i++){
-           if(serieList.get(i).getTitulo().contains(name)){
+        for(int i = 0; i <filmeList.size(); i++){
+           if(filmeList.get(i).getTitulo().contains(name)){
                this.table.setRowSelectionInterval(i, i);
                return;
            }
