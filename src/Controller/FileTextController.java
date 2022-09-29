@@ -19,10 +19,10 @@ public abstract class FileTextController extends FileController{
     
         
 
-     public abstract void Pesquisa(String nome);
-     public abstract void List(JTable table);
-     public abstract void Remove();
-     public abstract String ConverterParaString();
+    public abstract void Pesquisa(String nome);
+    public abstract void List(JTable table);
+    public abstract void Remove();
+    public abstract String ConverterParaString();
     public abstract void ConverterDeString(String conteudo);
     
     public FileTextController(JTable table) {

@@ -14,10 +14,10 @@ import Model.Jogo;
  *
  * @author adeli
  */
-public class TextJogoController extends FileTextController{
+public class JogoController extends FileBinaryController{
     
     ArrayList<Jogo> jogoList;
-    public TextJogoController(JTable table) {
+    public JogoController(JTable table) {
         super(table);
         jogoList = new ArrayList<Jogo>();
         if(arquivo.exists()){

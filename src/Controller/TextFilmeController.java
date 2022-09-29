@@ -15,10 +15,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author adeli
  */
-public class TextFilmeController extends FileTextController{
+public class FilmeController extends FileBinaryController{
 
     ArrayList<Filme> filmeList;
-    public TextFilmeController(JTable table) {
+    public FilmeController(JTable table) {
         super(table);
         filmeList = new ArrayList<Filme>();
         if(arquivo.exists()){

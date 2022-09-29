@@ -8,7 +8,9 @@ package Model;
  *
  * @author adeli
  */
-public abstract class Midia {
+public abstract class Midia implements java.io.Serializable{
+    private static long serialVersionUID = 2;
+
     String titulo;
     String genero;
     Integer ranking;

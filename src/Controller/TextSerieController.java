@@ -15,11 +15,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author adeli
  */
-public class TextSerieController extends FileTextController{
+public class SerieController extends FileBinaryController{
 
     ArrayList<Serie> serieList;
     
-    public TextSerieController(JTable table) {
+    public SerieController(JTable table) {
         super(table);
         serieList = new ArrayList<Serie>();
         if(arquivo.exists()){
