@@ -26,6 +26,8 @@ public abstract class FileController {
 
     
     public abstract void setArquivoNome();
+    public abstract void List(JTable table);
+
     
     
 

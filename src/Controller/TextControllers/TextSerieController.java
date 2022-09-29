@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Controller.TextControllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,11 +15,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author adeli
  */
-public class SerieController extends FileBinaryController{
+public class TextSerieController extends FileTextController{
 
     ArrayList<Serie> serieList;
     
-    public SerieController(JTable table) {
+    public TextSerieController(JTable table) {
         super(table);
         serieList = new ArrayList<Serie>();
         if(arquivo.exists()){

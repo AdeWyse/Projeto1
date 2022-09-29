@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Controller.TextControllers;
 
+import Controller.FileController;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;

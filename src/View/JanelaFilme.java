@@ -4,10 +4,7 @@
  */
 package View;
 
-import Controller.TextFilmeController;
-import java.io.IOException;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import Controller.BinaryControllers.BinaryFilmeController;
 import Model.Filme;
 
 /**
@@ -16,14 +13,14 @@ import Model.Filme;
  */
 public class JanelaFilme extends janelaComponentes {
 
-    TextFilmeController filmeController;
+    BinaryFilmeController filmeController;
 
     /**
      * Creates new form JanelaFilme
      */
     public JanelaFilme() {
         initComponents();
-        filmeController = new TextFilmeController(tabela);
+        filmeController = new BinaryFilmeController(tabela);
          SliderValueShow(rankingSlider, rankingValueLabel);
 
     }

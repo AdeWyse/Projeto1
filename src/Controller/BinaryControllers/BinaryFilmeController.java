@@ -2,12 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Controller.BinaryControllers;
 
+/**
+ *
+ * @author adeli
+ */
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import Model.Filme;
 import Model.Midia;
+import java.io.IOException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,77 +20,53 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author adeli
  */
-public class FilmeController extends FileBinaryController{
+public class BinaryFilmeController extends FileBinaryController{
 
-    ArrayList<Filme> filmeList;
-    public FilmeController(JTable table) {
+    public ArrayList<Filme> filmeList = null;
+    
+    public BinaryFilmeController(JTable table) {
         super(table);
-        filmeList = new ArrayList<Filme>();
+        ler();
+        ConverterParaFilme();
         if(arquivo.exists()){
             List(this.table);
-            ConverterDeString(Ler());
-        }
-    }
-
-    
-    
-    @Override
-    public String ConverterParaString() {
-        String converted = "";
-        for(int i= 0; i< filmeList.size(); i++){
-            converted = converted + filmeList.get(i).toString();
-                        converted = converted + "\n";
-        }
-        return converted;
-    }
-
-    @Override
-    public void ConverterDeString(String conteudo) {
-        String titulo;
-        String genero;
-        Integer ranking;
-        boolean foiAssistido;
-        
-        StringTokenizer tokenizer = new StringTokenizer(conteudo, "\n");
-        
-        int size = tokenizer.countTokens();
-        for(int i = 1; i <= size; i++){
-            String token = tokenizer.nextToken();
-            String[] dados = token.split(",");
-            titulo = dados[0];
-            genero = dados[1];
-            ranking = Integer.valueOf(dados[2]);
-            if(dados[3].equals("true")){
-
-                foiAssistido = true;
-            }else{
-                foiAssistido = false;
-            }
             
-            Filme filme = new Filme(titulo, genero, ranking, foiAssistido);
-            filmeList.add(filme);
         }
-        List(table);
+    }
+    
+    public void ConverterParaFilme() {
+        filmeList = new ArrayList<Filme>();
         
+       for(int i= 0; i< objectsList.size(); i++){
+           Filme temp = (Filme) this.objectsList.get(i);
+           filmeList.add(temp);
+       }
+    }
+    @Override
+    public void ConverterParaObject() {
+        this.objectsList.clear();
+       for(int i= 0; i< filmeList.size(); i++){
+           Object temp = (Object) this.filmeList.get(i);
+           this.objectsList.add(temp);
+       }
     }
     
     @Override
     public void setArquivoNome(){
-        this.arquivoNome = "filme.txt";
+        this.arquivoNome = "filme.bin";
     }
     
     // @override
     public void Add(Filme filme){
         filmeList.add(filme);
-       EscreverListar();
+       escreverListar();
     }
     
-   @Override
     public void Remove(){
         Integer index = this.table.getSelectedRow();
         Filme filmeRemover = filmeList.get(index);
         filmeList.remove(filmeRemover);
-        EscreverListar();
+        escreverListar();
     }
     
     @Override    
@@ -112,7 +93,7 @@ public class FilmeController extends FileBinaryController{
         filmeList.get(index).setGenero(filmeEditar.getGenero());
         filmeList.get(index).setRanking(filmeEditar.getRanking());
         filmeList.get(index).setFoiAssistido(filmeEditar.getFoiAssistido());
-        EscreverListar();
+        escreverListar();
     }
     
     
@@ -129,4 +110,5 @@ public class FilmeController extends FileBinaryController{
            }
        }
     }
-}
+    
+   }

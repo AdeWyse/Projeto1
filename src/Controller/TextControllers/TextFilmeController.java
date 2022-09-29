@@ -2,24 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Controller.TextControllers;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import Model.Filme;
+import Model.Midia;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import Model.Jogo;
 
 /**
  *
  * @author adeli
  */
-public class JogoController extends FileBinaryController{
-    
-    ArrayList<Jogo> jogoList;
-    public JogoController(JTable table) {
+public class TextFilmeController extends FileTextController{
+
+    ArrayList<Filme> filmeList;
+    public TextFilmeController(JTable table) {
         super(table);
-        jogoList = new ArrayList<Jogo>();
+        filmeList = new ArrayList<Filme>();
         if(arquivo.exists()){
             List(this.table);
             ConverterDeString(Ler());
@@ -31,8 +32,8 @@ public class JogoController extends FileBinaryController{
     @Override
     public String ConverterParaString() {
         String converted = "";
-        for(int i= 0; i< jogoList.size(); i++){
-            converted = converted + jogoList.get(i).toString();
+        for(int i= 0; i< filmeList.size(); i++){
+            converted = converted + filmeList.get(i).toString();
                         converted = converted + "\n";
         }
         return converted;
@@ -43,8 +44,7 @@ public class JogoController extends FileBinaryController{
         String titulo;
         String genero;
         Integer ranking;
-        Integer horasJogadas;
-        boolean foiHistoriaTerminada;
+        boolean foiAssistido;
         
         StringTokenizer tokenizer = new StringTokenizer(conteudo, "\n");
         
@@ -55,16 +55,15 @@ public class JogoController extends FileBinaryController{
             titulo = dados[0];
             genero = dados[1];
             ranking = Integer.valueOf(dados[2]);
-            horasJogadas = Integer.valueOf(dados[3]);
-            if(dados[4].equals("true")){
+            if(dados[3].equals("true")){
 
-                foiHistoriaTerminada = true;
+                foiAssistido = true;
             }else{
-                foiHistoriaTerminada = false;
+                foiAssistido = false;
             }
             
-            Jogo jogo = new Jogo(titulo, genero, ranking, horasJogadas, foiHistoriaTerminada);
-            jogoList.add(jogo);
+            Filme filme = new Filme(titulo, genero, ranking, foiAssistido);
+            filmeList.add(filme);
         }
         List(table);
         
@@ -72,20 +71,20 @@ public class JogoController extends FileBinaryController{
     
     @Override
     public void setArquivoNome(){
-        this.arquivoNome = "jogo.txt";
+        this.arquivoNome = "filme.txt";
     }
     
     // @override
-    public void Add(Jogo jogo){
-        jogoList.add(jogo);
+    public void Add(Filme filme){
+        filmeList.add(filme);
        EscreverListar();
     }
     
    @Override
     public void Remove(){
         Integer index = this.table.getSelectedRow();
-        Jogo jogoRemover = jogoList.get(index);
-        jogoList.remove(jogoRemover);
+        Filme filmeRemover = filmeList.get(index);
+        filmeList.remove(filmeRemover);
         EscreverListar();
     }
     
@@ -94,43 +93,40 @@ public class JogoController extends FileBinaryController{
         
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        model.setRowCount(0);
-       for(int i = 0; i < jogoList.size(); i++){
-           String titulo = jogoList.get(i).getTitulo();
-           String genero = jogoList.get(i).getGenero();
-           Integer ranking = jogoList.get(i).getRanking();
-           Integer horasJogadas = jogoList.get(i).getHorasJogadas();
-           boolean foiHistoriaTerminada = jogoList.get(i).getFoiHistoriaTerminada();
+       for(int i = 0; i < filmeList.size(); i++){
+           String titulo = filmeList.get(i).getTitulo();
+           String genero = filmeList.get(i).getGenero();
+           Integer ranking = filmeList.get(i).getRanking();
+           Boolean foiAssistido = filmeList.get(i).getFoiAssistido();
            
-           Object[] data = {titulo, genero, ranking, horasJogadas, foiHistoriaTerminada};
+           Object[] data = {titulo, genero, ranking, foiAssistido};
            
          model.addRow(data);
        }
     }
     
    // @Override
-    public void Edit(Jogo jogoEditar){
+    public void Edit(Filme filmeEditar){
         Integer index = this.table.getSelectedRow();
-        jogoList.get(index).setTitulo(jogoEditar.getTitulo());
-        jogoList.get(index).setGenero(jogoEditar.getGenero());
-        jogoList.get(index).setRanking(jogoEditar.getRanking());
-        jogoList.get(index).setHorasJogadas(jogoEditar.getHorasJogadas());
-        jogoList.get(index).setFoiHistoriaTerminada(jogoEditar.getFoiHistoriaTerminada());
+        filmeList.get(index).setTitulo(filmeEditar.getTitulo());
+        filmeList.get(index).setGenero(filmeEditar.getGenero());
+        filmeList.get(index).setRanking(filmeEditar.getRanking());
+        filmeList.get(index).setFoiAssistido(filmeEditar.getFoiAssistido());
         EscreverListar();
     }
     
     
-    public Jogo loadEdit(){
+    public Filme loadEdit(){
         Integer index = this.table.getSelectedRow();
-        return jogoList.get(index);
+        return filmeList.get(index);
     }
     
     public void Pesquisa(String name){
-        for(int i = 0; i <jogoList.size(); i++){
-           if(jogoList.get(i).getTitulo().contains(name)){
+        for(int i = 0; i <filmeList.size(); i++){
+           if(filmeList.get(i).getTitulo().contains(name)){
                this.table.setRowSelectionInterval(i, i);
                return;
            }
        }
     }
-        
 }

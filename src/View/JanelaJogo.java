@@ -4,9 +4,7 @@
  */
 package View;
 
-import Controller.TextJogoController;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import Controller.BinaryControllers.BinaryJogoController;
 import Model.Jogo;
 
 /**
@@ -15,13 +13,13 @@ import Model.Jogo;
  */
 public class JanelaJogo extends janelaComponentes {
 
-    TextJogoController jogoController;
+    BinaryJogoController jogoController;
     /**
      * Creates new form JanelaJogo
      */
     public JanelaJogo() {
         initComponents();
-        jogoController = new TextJogoController(tabela);
+        jogoController = new BinaryJogoController(tabela);
         SliderValueShow(rankingSlider, rankingValueLabel);
         SliderValueShow(horasJogadasSlider, horasJofadasValueLabel);
     }
