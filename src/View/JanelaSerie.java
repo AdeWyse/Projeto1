@@ -4,8 +4,8 @@
  */
 package View;
 
-
 import Controller.BinaryControllers.BinarySerieController;
+import Controller.TextControllers.TextSerieController;
 import Model.Serie;
 
 /**
@@ -14,13 +14,26 @@ import Model.Serie;
  */
 public class JanelaSerie extends janelaComponentes {
 
-    BinarySerieController serieController;
+    int saveType;
+    BinarySerieController serieBinaryController;
+    TextSerieController serieTextController;
+
     /**
      * Creates new form JanelaSerie
      */
-    public JanelaSerie() {
+    public JanelaSerie(int saveType) {
         initComponents();
-        serieController = new BinarySerieController(tabela);
+        this.saveType = saveType;
+        switch (saveType) {
+            case 0:
+                serieTextController = new TextSerieController(tabela);
+                break;
+            case 1:
+                serieBinaryController = new BinarySerieController(tabela);
+                break;
+            default:
+                break;
+        }
         SliderValueShow(rankingSlider, rankingValueLabel);
         SliderValueShowWithLimit(numEpisodesSlider, numEpisodiosValue, assistidosSlider);
         SliderValueShow(assistidosSlider, assistidosValue);
@@ -314,18 +327,32 @@ public class JanelaSerie extends janelaComponentes {
         String titulo = tituloTextField.getText();
         String genero = generoTextField1.getText();
         int ranking = rankingSlider.getValue();
-        int numEpisodes= numEpisodesSlider.getValue();
+        int numEpisodes = numEpisodesSlider.getValue();
         int numAssistidos = assistidosSlider.getValue();
-        
-        Serie serie = new Serie(titulo,genero,ranking, numEpisodes, numAssistidos);
 
-                        
-        if(dialogueTitle.getText() == "Novo"){
-            serieController.Add(serie);
+        Serie serie = new Serie(titulo, genero, ranking, numEpisodes, numAssistidos);
 
-        }else{
-            serieController.Edit(serie);
+        switch (saveType) {
+            case 0:
+                if (dialogueTitle.getText() == "Novo") {
+                    serieTextController.Add(serie);
+
+                } else {
+                    serieTextController.Edit(serie);
+                }
+                break;
+            case 1:
+                if (dialogueTitle.getText() == "Novo") {
+                    serieBinaryController.Add(serie);
+
+                } else {
+                    serieBinaryController.Edit(serie);
+                }
+                break;
+            default:
+                break;
         }
+
         dialogue.setVisible(false);
 
     }//GEN-LAST:event_dialogueButtonActionPerformed
@@ -333,7 +360,17 @@ public class JanelaSerie extends janelaComponentes {
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         dialogueTitle.setText("Editar");
         dialogueButton.setText("Editar");
-        Serie serieEditar = serieController.loadEdit();
+        Serie serieEditar = new Serie("", "", 0, 0, 0);
+        switch (this.saveType) {
+            case 0:
+                serieEditar = serieTextController.loadEdit();
+                break;
+            case 1:
+                serieEditar = serieBinaryController.loadEdit();
+                break;
+            default:
+                break;
+        }
         tituloTextField.setText(serieEditar.getTitulo());
         generoTextField1.setText(serieEditar.getGenero());
         rankingSlider.setValue(serieEditar.getRanking());
@@ -343,7 +380,16 @@ public class JanelaSerie extends janelaComponentes {
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
-        serieController.Remove();
+        switch (this.saveType) {
+            case 0:
+                serieTextController.Remove();
+                break;
+            case 1:
+                serieBinaryController.Remove();
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed
@@ -363,7 +409,18 @@ public class JanelaSerie extends janelaComponentes {
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed
-        serieController.Pesquisa(buscaInput.getText());
+        switch (this.saveType) {
+            case 0:
+                serieTextController.Pesquisa(buscaInput.getText());
+                ;
+                break;
+            case 1:
+                serieBinaryController.Pesquisa(buscaInput.getText());
+                ;
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_buscaButtonActionPerformed
 
     /**
@@ -396,7 +453,7 @@ public class JanelaSerie extends janelaComponentes {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaSerie().setVisible(true);
+                //new JanelaSerie().setVisible(true);
             }
         });
     }

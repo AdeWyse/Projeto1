@@ -10,11 +10,14 @@ package View;
  */
 public class JanelaPrincipal extends javax.swing.JFrame {
 
+    int saveType = 1; // 0 -> texto, 1 -> binario, 2-> banco de dados
     /**
      * Creates new form JanelaPrincipal
      */
     public JanelaPrincipal() {
         initComponents();
+        SaveTypeDialog.setVisible(true);
+
     }
 
     /**
@@ -26,13 +29,62 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPasswordField1 = new javax.swing.JPasswordField();
+        SaveTypeDialog = new javax.swing.JDialog();
+        jLabel2 = new javax.swing.JLabel();
+        textButton = new javax.swing.JButton();
+        binaryText = new javax.swing.JButton();
         filmesButton = new javax.swing.JButton();
         seriesButton = new javax.swing.JButton();
         jogosButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        jPasswordField1.setText("jPasswordField1");
+        SaveTypeDialog.setAlwaysOnTop(true);
+        SaveTypeDialog.setMinimumSize(new java.awt.Dimension(450, 150));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Como você quer salvar/acessar suas Mídias?");
+
+        textButton.setText("Texto");
+        textButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textButtonActionPerformed(evt);
+            }
+        });
+
+        binaryText.setText("Binário");
+        binaryText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                binaryTextActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SaveTypeDialogLayout = new javax.swing.GroupLayout(SaveTypeDialog.getContentPane());
+        SaveTypeDialog.getContentPane().setLayout(SaveTypeDialogLayout);
+        SaveTypeDialogLayout.setHorizontalGroup(
+            SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SaveTypeDialogLayout.createSequentialGroup()
+                .addGroup(SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SaveTypeDialogLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel2))
+                    .addGroup(SaveTypeDialogLayout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(textButton)
+                        .addGap(100, 100, 100)
+                        .addComponent(binaryText)))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        SaveTypeDialogLayout.setVerticalGroup(
+            SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SaveTypeDialogLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textButton)
+                    .addComponent(binaryText))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,23 +147,33 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private void filmesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmesButtonActionPerformed
         
-        JanelaFilme janelaFilme = new JanelaFilme();
+        JanelaFilme janelaFilme = new JanelaFilme(this.saveType);
         janelaFilme.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_filmesButtonActionPerformed
 
     private void seriesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seriesButtonActionPerformed
-        JanelaSerie janelaSerie = new JanelaSerie();
+        JanelaSerie janelaSerie = new JanelaSerie(this.saveType);
         janelaSerie.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_seriesButtonActionPerformed
 
     private void jogosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogosButtonActionPerformed
-       JanelaJogo janelaJogo = new JanelaJogo();
+       JanelaJogo janelaJogo = new JanelaJogo(this.saveType);
         janelaJogo.setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_jogosButtonActionPerformed
+
+    private void textButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textButtonActionPerformed
+        this.saveType = 0;
+        SaveTypeDialog.dispose();
+    }//GEN-LAST:event_textButtonActionPerformed
+
+    private void binaryTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_binaryTextActionPerformed
+        this.saveType = 1;
+        SaveTypeDialog.dispose();
+    }//GEN-LAST:event_binaryTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,7 +201,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JanelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -149,10 +210,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog SaveTypeDialog;
+    private javax.swing.JButton binaryText;
     private javax.swing.JButton filmesButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jogosButton;
     private javax.swing.JButton seriesButton;
+    private javax.swing.JButton textButton;
     // End of variables declaration//GEN-END:variables
 }

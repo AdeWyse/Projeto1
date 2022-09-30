@@ -5,6 +5,7 @@
 package View;
 
 import Controller.BinaryControllers.BinaryFilmeController;
+import Controller.TextControllers.TextFilmeController;
 import Model.Filme;
 
 /**
@@ -13,15 +14,28 @@ import Model.Filme;
  */
 public class JanelaFilme extends janelaComponentes {
 
-    BinaryFilmeController filmeController;
+    int saveType;
+    BinaryFilmeController filmeBinaryController;
+    TextFilmeController filmeTextController;
 
     /**
      * Creates new form JanelaFilme
      */
-    public JanelaFilme() {
+    public JanelaFilme(int savetype) {
         initComponents();
-        filmeController = new BinaryFilmeController(tabela);
-         SliderValueShow(rankingSlider, rankingValueLabel);
+        this.saveType = savetype;
+        switch (saveType) {
+            case 0:
+                filmeTextController = new TextFilmeController(tabela);
+                break;
+            case 1:
+                filmeBinaryController = new BinaryFilmeController(tabela);
+                break;
+            default:
+                break;
+        }
+
+        SliderValueShow(rankingSlider, rankingValueLabel);
 
     }
 
@@ -291,15 +305,28 @@ public class JanelaFilme extends janelaComponentes {
         String genero = generoTextField1.getText();
         int ranking = rankingSlider.getValue();
         boolean foiAssistido = foiAssistidoCheckbox.isSelected();
-        
-        Filme filme = new Filme(titulo,genero,ranking, foiAssistido);
 
-                        
-        if(dialogueTitle.getText() == "Novo"){
-            filmeController.Add(filme);
+        Filme filme = new Filme(titulo, genero, ranking, foiAssistido);
 
-        }else{
-            filmeController.Edit(filme);
+        switch (this.saveType) {
+            case 0:
+                if (dialogueTitle.getText() == "Novo") {
+                    filmeTextController.Add(filme);
+
+                } else {
+                    filmeTextController.Edit(filme);
+                }
+                break;
+            case 1:
+                if (dialogueTitle.getText() == "Novo") {
+                    filmeBinaryController.Add(filme);
+
+                } else {
+                    filmeBinaryController.Edit(filme);
+                }
+                break;
+            default:
+                break;
         }
 
         dialogue.setVisible(false);
@@ -313,7 +340,18 @@ public class JanelaFilme extends janelaComponentes {
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         dialogueTitle.setText("Editar");
         dialogueButton.setText("Editar");
-        Filme filmeEditar = filmeController.loadEdit();
+        Filme filmeEditar = new Filme("","",0,false);
+        switch (this.saveType) {
+            case 0:
+                filmeEditar = filmeTextController.loadEdit();
+                break;
+            case 1:
+                filmeEditar = filmeBinaryController.loadEdit();
+                break;
+            default:
+                break;
+        }
+        
         tituloTextField.setText(filmeEditar.getTitulo());
         generoTextField1.setText(filmeEditar.getGenero());
         rankingSlider.setValue(filmeEditar.getRanking());
@@ -322,7 +360,17 @@ public class JanelaFilme extends janelaComponentes {
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
-        filmeController.Remove();
+       switch (this.saveType) {
+            case 0:
+                 filmeTextController.Remove();
+                break;
+            case 1:
+                 filmeBinaryController.Remove();
+                break;
+            default:
+                break;
+        }
+       
     }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
@@ -330,15 +378,23 @@ public class JanelaFilme extends janelaComponentes {
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed
-        filmeController.Pesquisa(buscaInput.getText());
+        switch (this.saveType) {
+            case 0:
+                 filmeTextController.Pesquisa(buscaInput.getText());;
+                break;
+            case 1:
+                 filmeBinaryController.Pesquisa(buscaInput.getText());;
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_buscaButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-         
-         
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -362,15 +418,13 @@ public class JanelaFilme extends janelaComponentes {
         }
         //</editor-fold>
 
-       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaFilme().setVisible(true);
+               // new JanelaFilme(this.saveType).setVisible(true);
             }
         });
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

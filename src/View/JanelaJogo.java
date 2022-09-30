@@ -4,7 +4,10 @@
  */
 package View;
 
+import Controller.BinaryControllers.BinaryFilmeController;
 import Controller.BinaryControllers.BinaryJogoController;
+import Controller.TextControllers.TextFilmeController;
+import Controller.TextControllers.TextJogoController;
 import Model.Jogo;
 
 /**
@@ -13,13 +16,25 @@ import Model.Jogo;
  */
 public class JanelaJogo extends janelaComponentes {
 
-    BinaryJogoController jogoController;
+    int saveType;
+    BinaryJogoController jogoBinaryController;
+    TextJogoController jogoTextController;
     /**
      * Creates new form JanelaJogo
      */
-    public JanelaJogo() {
+    public JanelaJogo(int saveType) {
         initComponents();
-        jogoController = new BinaryJogoController(tabela);
+        this.saveType = saveType;
+        switch (saveType) {
+            case 0:
+                jogoTextController = new TextJogoController(tabela);
+                break;
+            case 1:
+                jogoBinaryController = new BinaryJogoController(tabela);
+                break;
+            default:
+                break;
+        }
         SliderValueShow(rankingSlider, rankingValueLabel);
         SliderValueShow(horasJogadasSlider, horasJofadasValueLabel);
     }
@@ -302,11 +317,25 @@ public class JanelaJogo extends janelaComponentes {
         Jogo jogo = new Jogo(titulo,genero,ranking, horasJogadas, foiHistoriaTerminada);
 
                         
-        if(dialogueTitle.getText() == "Novo"){
-            jogoController.Add(jogo);
+       switch (this.saveType) {
+            case 0:
+                if (dialogueTitle.getText() == "Novo") {
+                    jogoTextController.Add(jogo);
 
-        }else{
-            jogoController.Edit(jogo);
+                } else {
+                    jogoTextController.Edit(jogo);
+                }
+                break;
+            case 1:
+                if (dialogueTitle.getText() == "Novo") {
+                    jogoBinaryController.Add(jogo);
+
+                } else {
+                    jogoBinaryController.Edit(jogo);
+                }
+                break;
+            default:
+                break;
         }
 
         dialogue.setVisible(false);
@@ -315,13 +344,32 @@ public class JanelaJogo extends janelaComponentes {
     }//GEN-LAST:event_dialogueButtonActionPerformed
 
     private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
-        jogoController.Remove();
+         switch (this.saveType) {
+            case 0:
+                 jogoTextController.Remove();
+                break;
+            case 1:
+                 jogoBinaryController.Remove();
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         dialogueTitle.setText("Editar");
         dialogueButton.setText("Editar");
-        Jogo jogoEditar = jogoController.loadEdit();
+        Jogo jogoEditar = new Jogo("","",0,0,false);
+        switch (this.saveType) {
+            case 0:
+                jogoEditar = jogoTextController.loadEdit();
+                break;
+            case 1:
+                jogoEditar = jogoBinaryController.loadEdit();
+                break;
+            default:
+                break;
+        }
         tituloTextField.setText(jogoEditar.getTitulo());
         generoTextField1.setText(jogoEditar.getGenero());
         rankingSlider.setValue(jogoEditar.getRanking());
@@ -347,7 +395,16 @@ public class JanelaJogo extends janelaComponentes {
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed
-        jogoController.Pesquisa(buscaInput.getText());
+         switch (this.saveType) {
+            case 0:
+                 jogoTextController.Pesquisa(buscaInput.getText());;
+                break;
+            case 1:
+                 jogoBinaryController.Pesquisa(buscaInput.getText());;
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_buscaButtonActionPerformed
 
     /**
@@ -380,7 +437,7 @@ public class JanelaJogo extends janelaComponentes {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaJogo().setVisible(true);
+                //new JanelaJogo().setVisible(true);
             }
         });
     }

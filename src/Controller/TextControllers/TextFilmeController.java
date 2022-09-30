@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 import Model.Filme;
 import Model.FilmeUtilitario;
-import Model.Midia;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *

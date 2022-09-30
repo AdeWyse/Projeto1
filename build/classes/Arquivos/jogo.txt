@@ -1,4 +1,4 @@
 Teste,Teste,1,5,false
 Teste,Teste,3,5,false
 Garr,Teste,4,4,true
-Peixinho,Teste,3,5,true
+Peixinho,Teste,3,155,true
