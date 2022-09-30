@@ -9,10 +9,8 @@ package Controller.BinaryControllers;
  * @author adeli
  */
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 import Model.Filme;
-import Model.Midia;
-import java.io.IOException;
+import Model.FilmeUtilitario;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,57 +56,34 @@ public class BinaryFilmeController extends FileBinaryController{
     
     // @override
     public void Add(Filme filme){
-        filmeList.add(filme);
+        filmeList = FilmeUtilitario.Add(filme, filmeList);
        escreverListar();
     }
     
     public void Remove(){
-        Integer index = this.table.getSelectedRow();
-        Filme filmeRemover = filmeList.get(index);
-        filmeList.remove(filmeRemover);
+       filmeList = FilmeUtilitario.Remove(filmeList, this.table);
         escreverListar();
     }
     
     @Override    
     public void List(JTable table){
         
-       DefaultTableModel model = (DefaultTableModel) table.getModel();
-       model.setRowCount(0);
-       for(int i = 0; i < filmeList.size(); i++){
-           String titulo = filmeList.get(i).getTitulo();
-           String genero = filmeList.get(i).getGenero();
-           Integer ranking = filmeList.get(i).getRanking();
-           Boolean foiAssistido = filmeList.get(i).getFoiAssistido();
-           
-           Object[] data = {titulo, genero, ranking, foiAssistido};
-           
-         model.addRow(data);
-       }
+      FilmeUtilitario.List(this.table, filmeList);
     }
     
    // @Override
     public void Edit(Filme filmeEditar){
-        Integer index = this.table.getSelectedRow();
-        filmeList.get(index).setTitulo(filmeEditar.getTitulo());
-        filmeList.get(index).setGenero(filmeEditar.getGenero());
-        filmeList.get(index).setRanking(filmeEditar.getRanking());
-        filmeList.get(index).setFoiAssistido(filmeEditar.getFoiAssistido());
+        filmeList = FilmeUtilitario.Edit(filmeEditar, filmeList, this.table);
         escreverListar();
     }
     
     
     public Filme loadEdit(){
-        Integer index = this.table.getSelectedRow();
-        return filmeList.get(index);
+        return FilmeUtilitario.loadEdit(filmeList, this.table);
     }
     
     public void Pesquisa(String name){
-        for(int i = 0; i <filmeList.size(); i++){
-           if(filmeList.get(i).getTitulo().contains(name)){
-               this.table.setRowSelectionInterval(i, i);
-               return;
-           }
-       }
+        FilmeUtilitario.Pesquisa(name, filmeList, this.table);
     }
     
    }

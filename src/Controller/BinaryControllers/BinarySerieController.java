@@ -5,9 +5,9 @@
 package Controller.BinaryControllers;
 
 import Model.Serie;
+import Model.SerieUtiltario;
 import java.util.ArrayList;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -52,58 +52,33 @@ public class BinarySerieController extends FileBinaryController{
     
     // @override
     public void Add(Serie serie){
-        serieList.add(serie);
+        serieList = SerieUtiltario.Add(serie, serieList);
        escreverListar();
     }
     
     public void Remove(){
-        Integer index = this.table.getSelectedRow();
-        Serie serieRemover = serieList.get(index);
-        serieList.remove(serieRemover);
+        serieList = SerieUtiltario.Remove(serieList, this.table);
         escreverListar();
     }
     
     @Override    
     public void List(JTable table){
         
-       DefaultTableModel model = (DefaultTableModel) table.getModel();
-       model.setRowCount(0);
-       for(int i = 0; i < serieList.size(); i++){
-           String titulo = serieList.get(i).getTitulo();
-           String genero = serieList.get(i).getGenero();
-           Integer ranking = serieList.get(i).getRanking();
-           Integer numEpisodios = serieList.get(i).getNumEpisodios();
-           Integer numEpisodiosAssistidos = serieList.get(i).getNumEpisodiosAssistidos();
-           
-           Object[] data = {titulo, genero, ranking, numEpisodios, numEpisodiosAssistidos};
-           
-         model.addRow(data);
-       }
+       SerieUtiltario.List(serieList, this.table);
     }
     
    // @Override
     public void Edit(Serie serieEditar){
-        Integer index = this.table.getSelectedRow();
-        serieList.get(index).setTitulo(serieEditar.getTitulo());
-        serieList.get(index).setGenero(serieEditar.getGenero());
-        serieList.get(index).setRanking(serieEditar.getRanking());
-        serieList.get(index).setNumEpisodios(serieEditar.getNumEpisodios());
-        serieList.get(index).setNumEpisodiosAssistidos(serieEditar.getNumEpisodiosAssistidos());
+       SerieUtiltario.Edit(serieEditar, serieList, this.table);
         escreverListar();
     }
     
     
     public Serie loadEdit(){
-        Integer index = this.table.getSelectedRow();
-        return serieList.get(index);
+        return SerieUtiltario.loadEdit(serieList, this.table);
     }
         
     public void Pesquisa(String name){
-        for(int i = 0; i <serieList.size(); i++){
-           if(serieList.get(i).getTitulo().contains(name)){
-               this.table.setRowSelectionInterval(i, i);
-               return;
-           }
-       }
+       SerieUtiltario.Pesquisa(name, serieList, this.table);
     }
 }

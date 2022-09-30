@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Model.Jogo;
+import Model.JogoUtilitario;
 
 /**
  *
@@ -74,63 +75,33 @@ public class TextJogoController extends FileTextController{
     public void setArquivoNome(){
         this.arquivoNome = "jogo.txt";
     }
-    
-    // @override
-    public void Add(Jogo jogo){
-        jogoList.add(jogo);
-       EscreverListar();
+     public void Add(Jogo jogo){
+        jogoList = JogoUtilitario.Add(jogo, jogoList);
+       escreverListar();
     }
     
-   @Override
     public void Remove(){
-        Integer index = this.table.getSelectedRow();
-        Jogo jogoRemover = jogoList.get(index);
-        jogoList.remove(jogoRemover);
-        EscreverListar();
+        jogoList = JogoUtilitario.Remove(jogoList, this.table);
+        escreverListar();
     }
     
     @Override    
     public void List(JTable table){
         
-       DefaultTableModel model = (DefaultTableModel) table.getModel();
-       model.setRowCount(0);
-       for(int i = 0; i < jogoList.size(); i++){
-           String titulo = jogoList.get(i).getTitulo();
-           String genero = jogoList.get(i).getGenero();
-           Integer ranking = jogoList.get(i).getRanking();
-           Integer horasJogadas = jogoList.get(i).getHorasJogadas();
-           boolean foiHistoriaTerminada = jogoList.get(i).getFoiHistoriaTerminada();
-           
-           Object[] data = {titulo, genero, ranking, horasJogadas, foiHistoriaTerminada};
-           
-         model.addRow(data);
-       }
+       JogoUtilitario.List(jogoList, this.table);
     }
     
-   // @Override
     public void Edit(Jogo jogoEditar){
-        Integer index = this.table.getSelectedRow();
-        jogoList.get(index).setTitulo(jogoEditar.getTitulo());
-        jogoList.get(index).setGenero(jogoEditar.getGenero());
-        jogoList.get(index).setRanking(jogoEditar.getRanking());
-        jogoList.get(index).setHorasJogadas(jogoEditar.getHorasJogadas());
-        jogoList.get(index).setFoiHistoriaTerminada(jogoEditar.getFoiHistoriaTerminada());
-        EscreverListar();
+        jogoList = JogoUtilitario.Edit(jogoEditar, jogoList, this.table);
+        escreverListar();
     }
     
     
     public Jogo loadEdit(){
-        Integer index = this.table.getSelectedRow();
-        return jogoList.get(index);
+        return JogoUtilitario.loadEdit(jogoList, this.table);
     }
     
     public void Pesquisa(String name){
-        for(int i = 0; i <jogoList.size(); i++){
-           if(jogoList.get(i).getTitulo().contains(name)){
-               this.table.setRowSelectionInterval(i, i);
-               return;
-           }
-       }
+       JogoUtilitario.Pesquisa(name, jogoList, this.table);
     }
-        
 }

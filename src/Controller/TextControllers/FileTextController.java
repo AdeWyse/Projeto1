@@ -58,7 +58,7 @@ public abstract class FileTextController extends FileController{
         writer.close();
     }
     
-    public void EscreverListar(){
+    public void escreverListar(){
         try{
             Escrever(ConverterParaString());
         }catch(IOException e){
