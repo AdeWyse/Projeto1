@@ -39,7 +39,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         SaveTypeDialog.setAlwaysOnTop(true);
-        SaveTypeDialog.setMinimumSize(new java.awt.Dimension(450, 150));
+        SaveTypeDialog.setMinimumSize(new java.awt.Dimension(525, 300));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Como você quer salvar/acessar suas Mídias?");
@@ -62,28 +62,27 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         SaveTypeDialog.getContentPane().setLayout(SaveTypeDialogLayout);
         SaveTypeDialogLayout.setHorizontalGroup(
             SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SaveTypeDialogLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SaveTypeDialogLayout.createSequentialGroup()
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addGroup(SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addGroup(SaveTypeDialogLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel2))
-                    .addGroup(SaveTypeDialogLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
+                        .addGap(41, 41, 41)
                         .addComponent(textButton)
                         .addGap(100, 100, 100)
                         .addComponent(binaryText)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(88, 88, 88))
         );
         SaveTypeDialogLayout.setVerticalGroup(
             SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SaveTypeDialogLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(83, 83, 83)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textButton)
                     .addComponent(binaryText))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
