@@ -9,6 +9,7 @@ import Controller.BinaryControllers.BinaryJogoController;
 import Controller.TextControllers.TextFilmeController;
 import Controller.TextControllers.TextJogoController;
 import Model.Jogo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -308,6 +309,11 @@ public class JanelaJogo extends janelaComponentes {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dialogueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dialogueButtonActionPerformed
+         Object[] opcoes = {"Sim", "Não"}; 
+        int optionPane =  JOptionPane.showOptionDialog(this,"Tem certeza?","Tem certeza?",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+      if(optionPane == 0){
+        
         String titulo = tituloTextField.getText();
         String genero = generoTextField1.getText();
         Integer ranking = rankingSlider.getValue();
@@ -340,11 +346,16 @@ public class JanelaJogo extends janelaComponentes {
 
         dialogue.setVisible(false);
         dialogue.setVisible(false);
+      }
 
     }//GEN-LAST:event_dialogueButtonActionPerformed
 
     private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
-         switch (this.saveType) {
+        Object[] opcoes = {"Sim", "Não"}; 
+        int optionPane =  JOptionPane.showOptionDialog(this,"Tem certeza de que quer excluir esse Jogo?","Excluir?",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+      if(optionPane == 0){ 
+        switch (this.saveType) {
             case 0:
                  jogoTextController.Remove();
                 break;
@@ -354,6 +365,7 @@ public class JanelaJogo extends janelaComponentes {
             default:
                 break;
         }
+      }
     }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
@@ -373,7 +385,7 @@ public class JanelaJogo extends janelaComponentes {
         tituloTextField.setText(jogoEditar.getTitulo());
         generoTextField1.setText(jogoEditar.getGenero());
         rankingSlider.setValue(jogoEditar.getRanking());
-        horasJogadasSlider.setValue(jogoEditar.getRanking());
+        horasJogadasSlider.setValue(jogoEditar.getHorasJogadas());
         foiHistoriaTerminadaCheckbox.setSelected(jogoEditar.getFoiHistoriaTerminada());
         dialogue.setVisible(true);
     }//GEN-LAST:event_editarButtonActionPerformed

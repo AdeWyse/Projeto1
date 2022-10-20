@@ -5,6 +5,7 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -57,11 +58,17 @@ public class FilmeUtilitario {
     }
      
      public static void Pesquisa(String name, ArrayList<Filme> filmeList, JTable table){
+         boolean isFound = false;
         for(int i = 0; i <filmeList.size(); i++){
            if(filmeList.get(i).getTitulo().contains(name)){
                table.setRowSelectionInterval(i, i);
+               isFound = true;
                return;
            }
        }
+        
+        if(!isFound){
+            JOptionPane.showMessageDialog(table, "Filme não encontrado.");
+        }
     }
 }

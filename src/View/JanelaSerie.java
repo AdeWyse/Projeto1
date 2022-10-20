@@ -7,6 +7,7 @@ package View;
 import Controller.BinaryControllers.BinarySerieController;
 import Controller.TextControllers.TextSerieController;
 import Model.Serie;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +24,7 @@ public class JanelaSerie extends janelaComponentes {
      */
     public JanelaSerie(int saveType) {
         initComponents();
+
         this.saveType = saveType;
         switch (saveType) {
             case 0:
@@ -324,6 +326,10 @@ public class JanelaSerie extends janelaComponentes {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dialogueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dialogueButtonActionPerformed
+        Object[] opcoes = {"Sim", "Não"}; 
+        int optionPane =  JOptionPane.showOptionDialog(this,"Tem certeza?","Tem certeza?",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+      if(optionPane == 0){
         String titulo = tituloTextField.getText();
         String genero = generoTextField1.getText();
         int ranking = rankingSlider.getValue();
@@ -354,6 +360,7 @@ public class JanelaSerie extends janelaComponentes {
         }
 
         dialogue.setVisible(false);
+      }
 
     }//GEN-LAST:event_dialogueButtonActionPerformed
 
@@ -380,6 +387,10 @@ public class JanelaSerie extends janelaComponentes {
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
+        Object[] opcoes = {"Sim", "Não"}; 
+        int optionPane =  JOptionPane.showOptionDialog(this,"Tem certeza de que quer excluir essa Série?","Excluir?",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+      if(optionPane == 0){
         switch (this.saveType) {
             case 0:
                 serieTextController.Remove();
@@ -390,6 +401,7 @@ public class JanelaSerie extends janelaComponentes {
             default:
                 break;
         }
+      }
     }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed

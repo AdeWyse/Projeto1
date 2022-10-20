@@ -5,6 +5,7 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -60,11 +61,19 @@ public class JogoUtilitario {
     }
     
     public static void Pesquisa(String name, ArrayList<Jogo> jogoList, JTable table){
+        
+         boolean isFound = false;
+         
         for(int i = 0; i <jogoList.size(); i++){
            if(jogoList.get(i).getTitulo().contains(name)){
                table.setRowSelectionInterval(i, i);
+               isFound = true;
                return;
            }
        }
+        
+        if(!isFound){
+            JOptionPane.showMessageDialog(table, "Jogo não encontrado.");
+        }
     }
 }

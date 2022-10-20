@@ -5,6 +5,7 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -62,11 +63,18 @@ public class SerieUtiltario {
     }
         
     public static void Pesquisa(String name, ArrayList<Serie> serieList, JTable table){
+         boolean isFound = false;
+         
         for(int i = 0; i <serieList.size(); i++){
            if(serieList.get(i).getTitulo().contains(name)){
                table.setRowSelectionInterval(i, i);
+               isFound = true;
                return;
            }
        }
+        
+        if(!isFound){
+            JOptionPane.showMessageDialog(table, "Série não encontrada.");
+        }
     }
 }

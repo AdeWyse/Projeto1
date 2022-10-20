@@ -7,6 +7,7 @@ package View;
 import Controller.BinaryControllers.BinaryFilmeController;
 import Controller.TextControllers.TextFilmeController;
 import Model.Filme;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -301,6 +302,10 @@ public class JanelaFilme extends janelaComponentes {
     }//GEN-LAST:event_novoButtonActionPerformed
 
     private void dialogueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dialogueButtonActionPerformed
+        Object[] opcoes = {"Sim", "Não"}; 
+        int optionPane =  JOptionPane.showOptionDialog(this,"Tem certeza?","Tem certeza?",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+      if(optionPane == 0){
         String titulo = tituloTextField.getText();
         String genero = generoTextField1.getText();
         int ranking = rankingSlider.getValue();
@@ -330,6 +335,7 @@ public class JanelaFilme extends janelaComponentes {
         }
 
         dialogue.setVisible(false);
+      }
 
     }//GEN-LAST:event_dialogueButtonActionPerformed
 
@@ -360,7 +366,11 @@ public class JanelaFilme extends janelaComponentes {
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
-       switch (this.saveType) {
+      Object[] opcoes = {"Sim", "Não"}; 
+        int optionPane =  JOptionPane.showOptionDialog(this,"Tem certeza de que quer excluir esse Filme?","Excluir?",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+      if(optionPane == 0){
+          switch (this.saveType) {
             case 0:
                  filmeTextController.Remove();
                 break;
@@ -370,7 +380,7 @@ public class JanelaFilme extends janelaComponentes {
             default:
                 break;
         }
-       
+      }
     }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed

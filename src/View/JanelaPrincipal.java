@@ -4,6 +4,8 @@
  */
 package View;
 
+import java.util.Locale;
+
 /**
  *
  * @author adeli
@@ -17,6 +19,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     public JanelaPrincipal() {
         initComponents();
         SaveTypeDialog.setVisible(true);
+        Locale.setDefault(new Locale("pt", "BR"));
 
     }
 
