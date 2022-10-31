@@ -32,12 +32,13 @@ public class FilmeUtilitario {
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        model.setRowCount(0);
        for(int i = 0; i < filmeList.size(); i++){
+           Integer id = filmeList.get(i).getId();
            String titulo = filmeList.get(i).getTitulo();
            String genero = filmeList.get(i).getGenero();
            Integer ranking = filmeList.get(i).getRanking();
            Boolean foiAssistido = filmeList.get(i).getFoiAssistido();
            
-           Object[] data = {titulo, genero, ranking, foiAssistido};
+           Object[] data = {id,titulo, genero, ranking, foiAssistido};
            
          model.addRow(data);
        }
@@ -45,6 +46,7 @@ public class FilmeUtilitario {
      
       public static ArrayList<Filme> Edit(Filme filmeEditar, ArrayList<Filme> filmeList, JTable table){
         Integer index = table.getSelectedRow();
+        filmeList.get(index).setId(filmeEditar.getId());
         filmeList.get(index).setTitulo(filmeEditar.getTitulo());
         filmeList.get(index).setGenero(filmeEditar.getGenero());
         filmeList.get(index).setRanking(filmeEditar.getRanking());

@@ -5,6 +5,7 @@
 package View;
 
 import Controller.BinaryControllers.BinaryFilmeController;
+import Controller.DBControllers.FilmeDAO;
 import Controller.TextControllers.TextFilmeController;
 import Model.Filme;
 import javax.swing.JOptionPane;
@@ -18,6 +19,7 @@ public class JanelaFilme extends janelaComponentes {
     int saveType;
     BinaryFilmeController filmeBinaryController;
     TextFilmeController filmeTextController;
+    FilmeDAO filmeDAO;
 
     /**
      * Creates new form JanelaFilme
@@ -31,6 +33,9 @@ public class JanelaFilme extends janelaComponentes {
                 break;
             case 1:
                 filmeBinaryController = new BinaryFilmeController(tabela);
+                break;
+            case 2:
+                filmeDAO = new FilmeDAO(tabela);
                 break;
             default:
                 break;
@@ -52,15 +57,17 @@ public class JanelaFilme extends janelaComponentes {
         dialogue = new javax.swing.JFrame();
         rankingSlider = new javax.swing.JSlider();
         rankingValueLabel = new javax.swing.JLabel();
-        tituloLabel = new javax.swing.JLabel();
+        idValue = new javax.swing.JLabel();
         dialogueButton = new javax.swing.JButton();
         rankingLabel = new javax.swing.JLabel();
         dialogueTitle = new javax.swing.JLabel();
         generoLabel = new javax.swing.JLabel();
         foiAssistidoLabel = new javax.swing.JLabel();
         foiAssistidoCheckbox = new javax.swing.JCheckBox();
-        tituloTextField = new javax.swing.JTextField();
         generoTextField1 = new javax.swing.JTextField();
+        tituloLabel1 = new javax.swing.JLabel();
+        tituloTextField = new javax.swing.JTextField();
+        idLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -77,7 +84,7 @@ public class JanelaFilme extends janelaComponentes {
 
         rankingValueLabel.setText("5");
 
-        tituloLabel.setText("Titulo");
+        idValue.setText("Titulo");
 
         dialogueButton.setText("Criar");
         dialogueButton.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +101,10 @@ public class JanelaFilme extends janelaComponentes {
         generoLabel.setText("Genêro");
 
         foiAssistidoLabel.setText("Foi assistido?");
+
+        tituloLabel1.setText("Titulo");
+
+        idLabel.setText("Id");
 
         javax.swing.GroupLayout dialogueLayout = new javax.swing.GroupLayout(dialogue.getContentPane());
         dialogue.getContentPane().setLayout(dialogueLayout);
@@ -119,9 +130,13 @@ public class JanelaFilme extends janelaComponentes {
                                 .addGap(18, 18, 18)
                                 .addComponent(rankingValueLabel))
                             .addGroup(dialogueLayout.createSequentialGroup()
-                                .addComponent(tituloLabel)
+                                .addComponent(tituloLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(dialogueLayout.createSequentialGroup()
+                                .addComponent(idLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(idValue))))
                     .addGroup(dialogueLayout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addComponent(dialogueButton))
@@ -135,11 +150,15 @@ public class JanelaFilme extends janelaComponentes {
             .addGroup(dialogueLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(dialogueTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idLabel)
+                    .addComponent(idValue))
                 .addGap(18, 18, 18)
                 .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(dialogueLayout.createSequentialGroup()
                         .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tituloLabel)
+                            .addComponent(tituloLabel1)
                             .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -154,7 +173,7 @@ public class JanelaFilme extends janelaComponentes {
                 .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(foiAssistidoLabel)
                     .addComponent(foiAssistidoCheckbox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addComponent(dialogueButton)
                 .addGap(41, 41, 41))
         );
@@ -172,17 +191,17 @@ public class JanelaFilme extends janelaComponentes {
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "Titulo", "Genêro", "Ranking", "Assistido"
+                "Id", "Titulo", "Genêro", "Ranking", "Assistido"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -306,12 +325,13 @@ public class JanelaFilme extends janelaComponentes {
         int optionPane =  JOptionPane.showOptionDialog(this,"Tem certeza?","Tem certeza?",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
       if(optionPane == 0){
+        Integer id = Integer.parseInt(idValue.getText());
         String titulo = tituloTextField.getText();
         String genero = generoTextField1.getText();
         int ranking = rankingSlider.getValue();
         boolean foiAssistido = foiAssistidoCheckbox.isSelected();
 
-        Filme filme = new Filme(titulo, genero, ranking, foiAssistido);
+        Filme filme = new Filme(id, titulo, genero, ranking, foiAssistido);
 
         switch (this.saveType) {
             case 0:
@@ -330,6 +350,14 @@ public class JanelaFilme extends janelaComponentes {
                     filmeBinaryController.Edit(filme);
                 }
                 break;
+                 case 2:
+                if (dialogueTitle.getText() == "Novo") {
+                    filmeDAO.Insert(filme);
+
+                } else {
+                    filmeDAO.Edit(filme);
+                }
+                break;
             default:
                 break;
         }
@@ -346,7 +374,7 @@ public class JanelaFilme extends janelaComponentes {
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         dialogueTitle.setText("Editar");
         dialogueButton.setText("Editar");
-        Filme filmeEditar = new Filme("","",0,false);
+        Filme filmeEditar = new Filme(0, "","",0,false);
         switch (this.saveType) {
             case 0:
                 filmeEditar = filmeTextController.loadEdit();
@@ -354,10 +382,14 @@ public class JanelaFilme extends janelaComponentes {
             case 1:
                 filmeEditar = filmeBinaryController.loadEdit();
                 break;
+            case 2:
+                filmeEditar = filmeDAO.loadEdit();
+                break;
             default:
                 break;
         }
         
+        idValue.setText(filmeEditar.getId().toString());
         tituloTextField.setText(filmeEditar.getTitulo());
         generoTextField1.setText(filmeEditar.getGenero());
         rankingSlider.setValue(filmeEditar.getRanking());
@@ -376,6 +408,9 @@ public class JanelaFilme extends janelaComponentes {
                 break;
             case 1:
                  filmeBinaryController.Remove();
+                break;
+            case 2:
+                 filmeDAO.Remove();
                 break;
             default:
                 break;
@@ -449,6 +484,8 @@ public class JanelaFilme extends janelaComponentes {
     private javax.swing.JLabel foiAssistidoLabel;
     private javax.swing.JLabel generoLabel;
     private javax.swing.JTextField generoTextField1;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JLabel idValue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton novoButton;
@@ -456,7 +493,7 @@ public class JanelaFilme extends janelaComponentes {
     private javax.swing.JSlider rankingSlider;
     private javax.swing.JLabel rankingValueLabel;
     private javax.swing.JTable tabela;
-    private javax.swing.JLabel tituloLabel;
+    private javax.swing.JLabel tituloLabel1;
     private javax.swing.JTextField tituloTextField;
     private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables

@@ -320,7 +320,7 @@ public class JanelaJogo extends janelaComponentes {
         Integer horasJogadas = horasJogadasSlider.getValue();
         boolean foiHistoriaTerminada = foiHistoriaTerminadaCheckbox.isSelected();
         
-        Jogo jogo = new Jogo(titulo,genero,ranking, horasJogadas, foiHistoriaTerminada);
+        Jogo jogo = new Jogo(0, titulo,genero,ranking, horasJogadas, foiHistoriaTerminada);
 
                         
        switch (this.saveType) {
@@ -371,7 +371,7 @@ public class JanelaJogo extends janelaComponentes {
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         dialogueTitle.setText("Editar");
         dialogueButton.setText("Editar");
-        Jogo jogoEditar = new Jogo("","",0,0,false);
+        Jogo jogoEditar = new Jogo(0,"","",0,0,false);
         switch (this.saveType) {
             case 0:
                 jogoEditar = jogoTextController.loadEdit();

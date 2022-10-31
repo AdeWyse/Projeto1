@@ -64,7 +64,7 @@ public class TextJogoController extends FileTextController{
                 foiHistoriaTerminada = false;
             }
             
-            Jogo jogo = new Jogo(titulo, genero, ranking, horasJogadas, foiHistoriaTerminada);
+            Jogo jogo = new Jogo(0, titulo, genero, ranking, horasJogadas, foiHistoriaTerminada);
             jogoList.add(jogo);
         }
         List(table);

@@ -61,7 +61,7 @@ public class TextFilmeController extends FileTextController{
                 foiAssistido = false;
             }
             
-            Filme filme = new Filme(titulo, genero, ranking, foiAssistido);
+            Filme filme = new Filme(0,titulo, genero, ranking, foiAssistido);
             filmeList.add(filme);
         }
         List(table);

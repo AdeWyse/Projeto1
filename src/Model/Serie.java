@@ -12,8 +12,8 @@ public class Serie extends Midia{
     Integer numEpisodios;
     Integer numEpisodiosAssistidos;
     
-    public Serie(String titulo, String genero, int ranking, Integer numEpisodios, Integer numEpisodiosAssistidos){
-        super(titulo,genero,ranking);
+    public Serie(Integer id,String titulo, String genero, int ranking, Integer numEpisodios, Integer numEpisodiosAssistidos){
+        super(id,titulo,genero,ranking);
         this.setNumEpisodios(numEpisodios);
         this.setNumEpisodiosAssistidos(numEpisodiosAssistidos);
     }

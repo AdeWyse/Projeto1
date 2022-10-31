@@ -5,6 +5,8 @@
 package View;
 
 import java.util.Locale;
+import Controller.BDController;
+
 
 /**
  *
@@ -36,6 +38,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         textButton = new javax.swing.JButton();
         binaryText = new javax.swing.JButton();
+        binaryText1 = new javax.swing.JButton();
         filmesButton = new javax.swing.JButton();
         seriesButton = new javax.swing.JButton();
         jogosButton = new javax.swing.JButton();
@@ -61,20 +64,29 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        binaryText1.setText("Banco de Dados");
+        binaryText1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                binaryText1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout SaveTypeDialogLayout = new javax.swing.GroupLayout(SaveTypeDialog.getContentPane());
         SaveTypeDialog.getContentPane().setLayout(SaveTypeDialogLayout);
         SaveTypeDialogLayout.setHorizontalGroup(
             SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SaveTypeDialogLayout.createSequentialGroup()
                 .addContainerGap(100, Short.MAX_VALUE)
-                .addGroup(SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(SaveTypeDialogLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(textButton)
-                        .addGap(100, 100, 100)
-                        .addComponent(binaryText)))
+                .addComponent(jLabel2)
                 .addGap(88, 88, 88))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SaveTypeDialogLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(textButton)
+                .addGap(100, 100, 100)
+                .addComponent(binaryText)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(binaryText1)
+                .addGap(49, 49, 49))
         );
         SaveTypeDialogLayout.setVerticalGroup(
             SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +96,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(SaveTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textButton)
-                    .addComponent(binaryText))
+                    .addComponent(binaryText)
+                    .addComponent(binaryText1))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
 
@@ -177,6 +190,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         SaveTypeDialog.dispose();
     }//GEN-LAST:event_binaryTextActionPerformed
 
+    private void binaryText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_binaryText1ActionPerformed
+        this.saveType = 2;
+        SaveTypeDialog.dispose();
+    }//GEN-LAST:event_binaryText1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,6 +232,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog SaveTypeDialog;
     private javax.swing.JButton binaryText;
+    private javax.swing.JButton binaryText1;
     private javax.swing.JButton filmesButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

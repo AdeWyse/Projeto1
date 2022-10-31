@@ -11,8 +11,8 @@ package Model;
 public class Filme extends Midia{
     boolean foiAssistido;
     
-    public Filme(String titulo, String genero, Integer ranking, boolean foiAssistido){
-        super(titulo,genero,ranking);
+    public Filme(Integer id, String titulo, String genero, Integer ranking, boolean foiAssistido){
+        super(id,titulo,genero,ranking);
         this.setFoiAssistido(foiAssistido);
     }
     

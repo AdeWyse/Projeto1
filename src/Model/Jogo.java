@@ -13,8 +13,8 @@ public class Jogo extends Midia{
     Integer horasJogadas;
     boolean foiHistoriaTerminada;
     
-    public Jogo (String titulo, String genero, Integer ranking, Integer horasJogadas, boolean foiHistoriaTerminada){
-        super(titulo,genero,ranking);
+    public Jogo (Integer id, String titulo, String genero, Integer ranking, Integer horasJogadas, boolean foiHistoriaTerminada){
+        super(id, titulo,genero,ranking);
         this.setHorasJogadas(horasJogadas);
         this.setFoiHistoriaTerminada(foiHistoriaTerminada);
     }

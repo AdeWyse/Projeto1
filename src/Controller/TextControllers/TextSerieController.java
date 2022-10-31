@@ -61,7 +61,7 @@ public class TextSerieController extends FileTextController{
             numEpisodios = Integer.valueOf(dados[3]);
             numEpisodiosAssistidos = Integer.valueOf(dados[4]);
             
-            Serie serie = new Serie(titulo, genero, ranking, numEpisodios, numEpisodiosAssistidos);
+            Serie serie = new Serie(0, titulo, genero, ranking, numEpisodios, numEpisodiosAssistidos);
             serieList.add(serie);
         }
         List(table);

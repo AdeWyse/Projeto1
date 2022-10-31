@@ -336,7 +336,7 @@ public class JanelaSerie extends janelaComponentes {
         int numEpisodes = numEpisodesSlider.getValue();
         int numAssistidos = assistidosSlider.getValue();
 
-        Serie serie = new Serie(titulo, genero, ranking, numEpisodes, numAssistidos);
+        Serie serie = new Serie(0, titulo, genero, ranking, numEpisodes, numAssistidos);
 
         switch (saveType) {
             case 0:
@@ -367,7 +367,7 @@ public class JanelaSerie extends janelaComponentes {
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         dialogueTitle.setText("Editar");
         dialogueButton.setText("Editar");
-        Serie serieEditar = new Serie("", "", 0, 0, 0);
+        Serie serieEditar = new Serie(0,"", "", 0, 0, 0);
         switch (this.saveType) {
             case 0:
                 serieEditar = serieTextController.loadEdit();

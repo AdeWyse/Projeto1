@@ -11,15 +11,21 @@ package Model;
 public abstract class Midia implements java.io.Serializable{
     //private static long serialVersionUID = 2;
 
+    Integer id;
     String titulo;
     String genero;
     Integer ranking;
     public abstract String toString();
     
-    public Midia(String titulo, String genero, Integer ranking){
+    public Midia(Integer id, String titulo, String genero, Integer ranking){
+        this.id = id;
         this.setTitulo(titulo);
         this.setGenero(genero);
         this.setRanking(ranking);
+    }
+    
+     public void setId(Integer id){
+        this.id = id;
     }
     
     public void setTitulo(String titulo){
@@ -32,6 +38,11 @@ public abstract class Midia implements java.io.Serializable{
      
     public void setRanking(Integer ranking){
         this.ranking = ranking;
+    }
+    
+     public Integer getId(){
+         
+       return this.id ;
     }
     
      public String getTitulo(){
