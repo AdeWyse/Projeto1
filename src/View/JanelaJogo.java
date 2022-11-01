@@ -227,6 +227,8 @@ public class JanelaJogo extends janelaComponentes {
                 return canEdit [columnIndex];
             }
         });
+        tabela.setSelectionBackground(new java.awt.Color(0, 204, 204));
+        tabela.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tabela);
 
         deletarButton.setBackground(new java.awt.Color(220, 20, 60));

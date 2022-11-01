@@ -212,6 +212,12 @@ public class JanelaFilme extends janelaComponentes {
                 return canEdit [columnIndex];
             }
         });
+        tabela.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabela.setFocusTraversalPolicyProvider(true);
+        tabela.setGridColor(new java.awt.Color(0, 153, 51));
+        tabela.setInheritsPopupMenu(true);
+        tabela.setSelectionBackground(new java.awt.Color(0, 153, 0));
+        tabela.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tabela);
 
         novoButton.setText("Novo");

@@ -244,6 +244,8 @@ public class JanelaSerie extends janelaComponentes {
                 return canEdit [columnIndex];
             }
         });
+        tabela.setSelectionBackground(new java.awt.Color(153, 0, 153));
+        tabela.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tabela);
 
         editarButton.setText("Editar");
