@@ -5,6 +5,7 @@
 package View;
 
 import Controller.BinaryControllers.BinarySerieController;
+import Controller.DBControllers.SerieDAO;
 import Controller.TextControllers.TextSerieController;
 import Model.Serie;
 import javax.swing.JOptionPane;
@@ -18,6 +19,7 @@ public class JanelaSerie extends janelaComponentes {
     int saveType;
     BinarySerieController serieBinaryController;
     TextSerieController serieTextController;
+    SerieDAO serieDAO;
 
     /**
      * Creates new form JanelaSerie
@@ -32,6 +34,9 @@ public class JanelaSerie extends janelaComponentes {
                 break;
             case 1:
                 serieBinaryController = new BinarySerieController(tabela);
+                break;
+            case 2:
+                serieDAO = new SerieDAO(tabela);
                 break;
             default:
                 break;
@@ -68,6 +73,8 @@ public class JanelaSerie extends janelaComponentes {
         rankingValueLabel = new javax.swing.JLabel();
         assistidosSlider = new javax.swing.JSlider();
         assistidosValue = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
+        idValue = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -78,7 +85,7 @@ public class JanelaSerie extends janelaComponentes {
         buscaButton = new javax.swing.JButton();
         buscaInput = new javax.swing.JTextField();
 
-        dialogue.setMinimumSize(new java.awt.Dimension(500, 360));
+        dialogue.setMinimumSize(new java.awt.Dimension(500, 450));
 
         numEpisodesSlider.setMajorTickSpacing(200);
         numEpisodesSlider.setMaximum(200);
@@ -116,6 +123,10 @@ public class JanelaSerie extends janelaComponentes {
 
         assistidosValue.setText("0");
 
+        idLabel.setText("Id");
+
+        idValue.setText("0");
+
         javax.swing.GroupLayout dialogueLayout = new javax.swing.GroupLayout(dialogue.getContentPane());
         dialogue.getContentPane().setLayout(dialogueLayout);
         dialogueLayout.setHorizontalGroup(
@@ -123,7 +134,10 @@ public class JanelaSerie extends janelaComponentes {
             .addGroup(dialogueLayout.createSequentialGroup()
                 .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dialogueLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(175, 175, 175)
+                        .addComponent(dialogueTitle))
+                    .addGroup(dialogueLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
                         .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(dialogueLayout.createSequentialGroup()
                                 .addComponent(generoLabel)
@@ -150,20 +164,25 @@ public class JanelaSerie extends janelaComponentes {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(numEpisodesSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(numEpisodiosValue))))
-                    .addGroup(dialogueLayout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(dialogueTitle))
-                    .addGroup(dialogueLayout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(dialogueButton)))
-                .addContainerGap(88, Short.MAX_VALUE))
+                                .addComponent(numEpisodiosValue))
+                            .addGroup(dialogueLayout.createSequentialGroup()
+                                .addGap(131, 131, 131)
+                                .addComponent(dialogueButton))
+                            .addGroup(dialogueLayout.createSequentialGroup()
+                                .addComponent(idLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(idValue)))))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         dialogueLayout.setVerticalGroup(
             dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogueLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(dialogueTitle)
+                .addGap(18, 18, 18)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idLabel)
+                    .addComponent(idValue))
                 .addGap(18, 18, 18)
                 .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tituloLabel)
@@ -194,7 +213,7 @@ public class JanelaSerie extends janelaComponentes {
                         .addComponent(assistidosValue, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addGap(18, 18, 18)
                 .addComponent(dialogueButton)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -207,14 +226,14 @@ public class JanelaSerie extends janelaComponentes {
 
             },
             new String [] {
-                "Titulo", "Genêro", "Ranking", "Episódios", "Assistidos"
+                "Id", "Titulo", "Genêro", "Ranking", "Episódios", "Assistidos"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -330,13 +349,14 @@ public class JanelaSerie extends janelaComponentes {
         int optionPane =  JOptionPane.showOptionDialog(this,"Tem certeza?","Tem certeza?",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
       if(optionPane == 0){
+        Integer id = Integer.parseInt(idValue.getText());
         String titulo = tituloTextField.getText();
         String genero = generoTextField1.getText();
         int ranking = rankingSlider.getValue();
         int numEpisodes = numEpisodesSlider.getValue();
         int numAssistidos = assistidosSlider.getValue();
 
-        Serie serie = new Serie(0, titulo, genero, ranking, numEpisodes, numAssistidos);
+        Serie serie = new Serie(id, titulo, genero, ranking, numEpisodes, numAssistidos);
 
         switch (saveType) {
             case 0:
@@ -353,6 +373,15 @@ public class JanelaSerie extends janelaComponentes {
 
                 } else {
                     serieBinaryController.Edit(serie);
+                }
+                break;
+            case 2:
+                if (dialogueTitle.getText() == "Novo") {
+                    serieDAO.Insert(serie);
+
+                } else {
+                    
+                    serieDAO.Edit(serie);
                 }
                 break;
             default:
@@ -375,9 +404,14 @@ public class JanelaSerie extends janelaComponentes {
             case 1:
                 serieEditar = serieBinaryController.loadEdit();
                 break;
+             case 2:
+                serieEditar = serieDAO.loadEdit();
+                break;
             default:
                 break;
         }
+        
+        idValue.setText(serieEditar.getId().toString());
         tituloTextField.setText(serieEditar.getTitulo());
         generoTextField1.setText(serieEditar.getGenero());
         rankingSlider.setValue(serieEditar.getRanking());
@@ -397,6 +431,9 @@ public class JanelaSerie extends janelaComponentes {
                 break;
             case 1:
                 serieBinaryController.Remove();
+                break;
+            case 2:
+                 serieDAO.Remove();
                 break;
             default:
                 break;
@@ -424,11 +461,12 @@ public class JanelaSerie extends janelaComponentes {
         switch (this.saveType) {
             case 0:
                 serieTextController.Pesquisa(buscaInput.getText());
-                ;
                 break;
             case 1:
                 serieBinaryController.Pesquisa(buscaInput.getText());
-                ;
+                break;
+            case 2:
+                 serieDAO.Pesquisa(buscaInput.getText());
                 break;
             default:
                 break;
@@ -483,6 +521,8 @@ public class JanelaSerie extends janelaComponentes {
     private javax.swing.JButton editarButton;
     private javax.swing.JLabel generoLabel;
     private javax.swing.JTextField generoTextField1;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JLabel idValue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton novoButton;

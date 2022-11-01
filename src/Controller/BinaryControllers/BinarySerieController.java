@@ -5,7 +5,7 @@
 package Controller.BinaryControllers;
 
 import Model.Serie;
-import Model.SerieUtiltario;
+import Model.SerieUtilitario;
 import java.util.ArrayList;
 import javax.swing.JTable;
 
@@ -52,33 +52,33 @@ public class BinarySerieController extends FileBinaryController{
     
     // @override
     public void Add(Serie serie){
-        serieList = SerieUtiltario.Add(serie, serieList);
+        serieList = SerieUtilitario.Add(serie, serieList);
        escreverListar();
     }
     
     public void Remove(){
-        serieList = SerieUtiltario.Remove(serieList, this.table);
+        serieList = SerieUtilitario.Remove(serieList, this.table);
         escreverListar();
     }
     
     @Override    
     public void List(JTable table){
         
-       SerieUtiltario.List(serieList, this.table);
+       SerieUtilitario.List(serieList, this.table);
     }
     
    // @Override
     public void Edit(Serie serieEditar){
-       SerieUtiltario.Edit(serieEditar, serieList, this.table);
+       SerieUtilitario.Edit(serieEditar, serieList, this.table);
         escreverListar();
     }
     
     
     public Serie loadEdit(){
-        return SerieUtiltario.loadEdit(serieList, this.table);
+        return SerieUtilitario.loadEdit(serieList, this.table);
     }
         
     public void Pesquisa(String name){
-       SerieUtiltario.Pesquisa(name, serieList, this.table);
+       SerieUtilitario.Pesquisa(name, serieList, this.table);
     }
 }

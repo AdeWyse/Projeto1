@@ -32,13 +32,14 @@ public class JogoUtilitario {
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        model.setRowCount(0);
        for(int i = 0; i < jogoList.size(); i++){
+           Integer id = jogoList.get(i).getId();
            String titulo = jogoList.get(i).getTitulo();
            String genero = jogoList.get(i).getGenero();
            Integer ranking = jogoList.get(i).getRanking();
            Integer horasJogadas = jogoList.get(i).getHorasJogadas();
            boolean foiHistoriaTerminada = jogoList.get(i).getFoiHistoriaTerminada();
            
-           Object[] data = {titulo, genero, ranking, horasJogadas, foiHistoriaTerminada};
+           Object[] data = {id, titulo, genero, ranking, horasJogadas, foiHistoriaTerminada};
            
          model.addRow(data);
        }
@@ -46,6 +47,7 @@ public class JogoUtilitario {
     
     public static ArrayList<Jogo> Edit(Jogo jogoEditar, ArrayList<Jogo> jogoList, JTable table){
         Integer index = table.getSelectedRow();
+         jogoList.get(index).setId(jogoEditar.getId());
         jogoList.get(index).setTitulo(jogoEditar.getTitulo());
         jogoList.get(index).setGenero(jogoEditar.getGenero());
         jogoList.get(index).setRanking(jogoEditar.getRanking());

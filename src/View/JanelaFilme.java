@@ -84,7 +84,7 @@ public class JanelaFilme extends janelaComponentes {
 
         rankingValueLabel.setText("5");
 
-        idValue.setText("Titulo");
+        idValue.setText("0");
 
         dialogueButton.setText("Criar");
         dialogueButton.addActionListener(new java.awt.event.ActionListener() {
@@ -350,7 +350,7 @@ public class JanelaFilme extends janelaComponentes {
                     filmeBinaryController.Edit(filme);
                 }
                 break;
-                 case 2:
+            case 2:
                 if (dialogueTitle.getText() == "Novo") {
                     filmeDAO.Insert(filme);
 
@@ -429,6 +429,9 @@ public class JanelaFilme extends janelaComponentes {
                 break;
             case 1:
                  filmeBinaryController.Pesquisa(buscaInput.getText());;
+                break;
+            case 2:
+                 filmeDAO.Pesquisa(buscaInput.getText());;
                 break;
             default:
                 break;

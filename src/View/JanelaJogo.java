@@ -4,9 +4,8 @@
  */
 package View;
 
-import Controller.BinaryControllers.BinaryFilmeController;
 import Controller.BinaryControllers.BinaryJogoController;
-import Controller.TextControllers.TextFilmeController;
+import Controller.DBControllers.JogoDAO;
 import Controller.TextControllers.TextJogoController;
 import Model.Jogo;
 import javax.swing.JOptionPane;
@@ -20,6 +19,7 @@ public class JanelaJogo extends janelaComponentes {
     int saveType;
     BinaryJogoController jogoBinaryController;
     TextJogoController jogoTextController;
+    JogoDAO jogoDAO;
     /**
      * Creates new form JanelaJogo
      */
@@ -32,6 +32,9 @@ public class JanelaJogo extends janelaComponentes {
                 break;
             case 1:
                 jogoBinaryController = new BinaryJogoController(tabela);
+                break;
+            case 2:
+                jogoDAO = new JogoDAO(tabela);
                 break;
             default:
                 break;
@@ -64,6 +67,8 @@ public class JanelaJogo extends janelaComponentes {
         horasJogadasLabel = new javax.swing.JLabel();
         horasJogadasSlider = new javax.swing.JSlider();
         horasJofadasValueLabel = new javax.swing.JLabel();
+        idValue = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -74,7 +79,7 @@ public class JanelaJogo extends janelaComponentes {
         buscaButton = new javax.swing.JButton();
         buscaInput = new javax.swing.JTextField();
 
-        dialogue.setMinimumSize(new java.awt.Dimension(410, 350));
+        dialogue.setMinimumSize(new java.awt.Dimension(450, 450));
 
         rankingSlider.setMaximum(5);
 
@@ -104,45 +109,56 @@ public class JanelaJogo extends janelaComponentes {
 
         horasJofadasValueLabel.setText("0");
 
+        idValue.setText("0");
+
+        idLabel.setText("Id");
+
         javax.swing.GroupLayout dialogueLayout = new javax.swing.GroupLayout(dialogue.getContentPane());
         dialogue.getContentPane().setLayout(dialogueLayout);
         dialogueLayout.setHorizontalGroup(
             dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogueLayout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(dialogueTitle)
+                .addContainerGap(135, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogueLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dialogueLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dialogueLayout.createSequentialGroup()
-                                .addComponent(foiTerminadaLabel)
+                        .addComponent(foiTerminadaLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(foiHistoriaTerminadaCheckbox))
+                    .addGroup(dialogueLayout.createSequentialGroup()
+                        .addComponent(generoLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogueLayout.createSequentialGroup()
+                        .addComponent(tituloLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogueLayout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(dialogueButton))
+                    .addGroup(dialogueLayout.createSequentialGroup()
+                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialogueLayout.createSequentialGroup()
+                                .addComponent(horasJogadasLabel)
                                 .addGap(18, 18, 18)
-                                .addComponent(foiHistoriaTerminadaCheckbox))
-                            .addGroup(dialogueLayout.createSequentialGroup()
-                                .addComponent(generoLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(dialogueLayout.createSequentialGroup()
+                                .addComponent(horasJogadasSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialogueLayout.createSequentialGroup()
                                 .addComponent(rankingLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(rankingValueLabel))
-                            .addGroup(dialogueLayout.createSequentialGroup()
-                                .addComponent(tituloLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(dialogueLayout.createSequentialGroup()
-                                .addComponent(horasJogadasLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(horasJogadasSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(horasJofadasValueLabel))))
-                    .addGroup(dialogueLayout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(dialogueTitle))
-                    .addGroup(dialogueLayout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(dialogueButton)))
+                                .addComponent(rankingValueLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(horasJofadasValueLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(dialogueLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(idLabel)
+                .addGap(18, 18, 18)
+                .addComponent(idValue)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dialogueLayout.setVerticalGroup(
@@ -150,34 +166,37 @@ public class JanelaJogo extends janelaComponentes {
             .addGroup(dialogueLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(dialogueTitle)
+                .addGap(28, 28, 28)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idLabel)
+                    .addComponent(idValue))
+                .addGap(18, 18, 18)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloLabel)
+                    .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(generoLabel)
+                    .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(dialogueLayout.createSequentialGroup()
-                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tituloLabel)
-                            .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(generoLabel)
-                            .addComponent(generoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rankingLabel)
-                            .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(rankingValueLabel)))
-                        .addGap(18, 18, 18)
-                        .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(horasJogadasLabel)
-                            .addComponent(horasJogadasSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(horasJofadasValueLabel))
+                    .addComponent(rankingLabel)
+                    .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rankingSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rankingValueLabel)))
+                .addGap(18, 18, 18)
+                .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(horasJogadasLabel)
+                    .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(horasJogadasSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(horasJofadasValueLabel)))
                 .addGap(18, 18, 18)
                 .addGroup(dialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(foiTerminadaLabel)
                     .addComponent(foiHistoriaTerminadaCheckbox))
                 .addGap(28, 28, 28)
                 .addComponent(dialogueButton)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -190,14 +209,14 @@ public class JanelaJogo extends janelaComponentes {
 
             },
             new String [] {
-                "Titulo", "Genêro", "Ranking", "Horas jogadas", "Completo"
+                "Id", "Titulo", "Genêro", "Ranking", "Horas jogadas", "Completo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -314,13 +333,14 @@ public class JanelaJogo extends janelaComponentes {
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
       if(optionPane == 0){
         
+        Integer id = Integer.parseInt(idValue.getText());
         String titulo = tituloTextField.getText();
         String genero = generoTextField1.getText();
         Integer ranking = rankingSlider.getValue();
         Integer horasJogadas = horasJogadasSlider.getValue();
         boolean foiHistoriaTerminada = foiHistoriaTerminadaCheckbox.isSelected();
         
-        Jogo jogo = new Jogo(0, titulo,genero,ranking, horasJogadas, foiHistoriaTerminada);
+        Jogo jogo = new Jogo(id, titulo , genero, ranking, horasJogadas, foiHistoriaTerminada);
 
                         
        switch (this.saveType) {
@@ -340,11 +360,18 @@ public class JanelaJogo extends janelaComponentes {
                     jogoBinaryController.Edit(jogo);
                 }
                 break;
+             case 2:
+                if (dialogueTitle.getText() == "Novo") {
+                    jogoDAO.Insert(jogo);
+
+                } else {
+                    jogoDAO.Edit(jogo);
+                }
+                break;
             default:
                 break;
         }
 
-        dialogue.setVisible(false);
         dialogue.setVisible(false);
       }
 
@@ -361,6 +388,9 @@ public class JanelaJogo extends janelaComponentes {
                 break;
             case 1:
                  jogoBinaryController.Remove();
+                break;
+             case 2:
+                 jogoDAO.Remove();
                 break;
             default:
                 break;
@@ -379,9 +409,14 @@ public class JanelaJogo extends janelaComponentes {
             case 1:
                 jogoEditar = jogoBinaryController.loadEdit();
                 break;
+            case 2:
+                jogoEditar = jogoDAO.loadEdit();
+                break;
             default:
                 break;
         }
+        
+        idValue.setText(jogoEditar.getId().toString());
         tituloTextField.setText(jogoEditar.getTitulo());
         generoTextField1.setText(jogoEditar.getGenero());
         rankingSlider.setValue(jogoEditar.getRanking());
@@ -413,6 +448,9 @@ public class JanelaJogo extends janelaComponentes {
                 break;
             case 1:
                  jogoBinaryController.Pesquisa(buscaInput.getText());;
+                break;
+            case 2:
+                 jogoDAO.Pesquisa(buscaInput.getText());;
                 break;
             default:
                 break;
@@ -469,6 +507,8 @@ public class JanelaJogo extends janelaComponentes {
     private javax.swing.JLabel horasJofadasValueLabel;
     private javax.swing.JLabel horasJogadasLabel;
     private javax.swing.JSlider horasJogadasSlider;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JLabel idValue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton novoButton;

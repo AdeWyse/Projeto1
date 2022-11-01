@@ -5,43 +5,45 @@
 package Controller.DBControllers;
 
 import Controller.BDController;
-import Model.Filme;
-import Model.FilmeUtilitario;
-import java.util.ArrayList;
+import Model.Jogo;
+import Model.JogoUtilitario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
  *
- * @author adeli
+ * @author UTFPR
  */
-public class FilmeDAO extends BDController {
-
-    private static final String sqlconsultaFilme = "SELECT * FROM filme order by titulo";
-    private static final String sqlinserir = "INSERT INTO filme (titulo, genero, ranking, foiAssistido) VALUES ( ?, ?, ?, ?)";
-    private static final String sqlalterar = "UPDATE filme SET titulo = ?, genero = ?, ranking = ?, foiAssistido = ? WHERE id = ?";
-    private static final String sqlaexcluir = "DELETE FROM filme WHERE id = ?";
+public class JogoDAO extends BDController {
+    private static final String sqlconsultaJogo = "SELECT * FROM jogo order by titulo";
+    private static final String sqlinserir = "INSERT INTO jogo (titulo, genero, ranking, horasjogadas, foihistoriaterminada) VALUES ( ?, ?, ?, ?, ?)";
+    private static final String sqlalterar = "UPDATE jogo SET titulo = ?, genero = ?, ranking = ?, horasjogadas = ?, foihistoriaterminada = ? WHERE id = ?";
+    private static final String sqlaexcluir = "DELETE FROM jogo WHERE id = ?";
     private PreparedStatement pstdados = null;
     private ResultSet rsdados = null;
-    ArrayList<Filme> filmes;
-    public FilmeDAO(JTable table) {
+    ArrayList<Jogo> jogos;
+    public JogoDAO(JTable table) {
+
         super(table);
-        filmes = new ArrayList<Filme>();
+        jogos = new ArrayList<Jogo>();
         List(this.table);
     }
-    public boolean Insert(Filme filme) {
+    public boolean Insert(Jogo jogo) {
         try {
             int tipo = ResultSet.TYPE_SCROLL_SENSITIVE;
             int concorrencia = ResultSet.CONCUR_UPDATABLE;
             pstdados = connection.prepareStatement(sqlinserir, tipo, concorrencia);
-            pstdados.setString(1, filme.getTitulo());
-            pstdados.setString(2, filme.getGenero());
-            pstdados.setInt(3, filme.getRanking());
-            pstdados.setBoolean(4, filme.getFoiAssistido());
+            pstdados.setString(1, jogo.getTitulo());
+            pstdados.setString(2, jogo.getGenero());
+            pstdados.setInt(3, jogo.getRanking());
+            pstdados.setInt(4, jogo.getHorasJogadas());
+            pstdados.setBoolean(5, jogo.getFoiHistoriaTerminada());
             int resposta = pstdados.executeUpdate();
             pstdados.close();
+            System.out.println(resposta);
             
             if (resposta == 1) {
                 connection.commit();
@@ -59,23 +61,24 @@ public class FilmeDAO extends BDController {
      
     public void List(JTable table){
       ConsultarTodos();
-      FilmeUtilitario.List(this.table, filmes);
+      JogoUtilitario.List(jogos, this.table);
     }
     
-    public Filme loadEdit(){
-        return FilmeUtilitario.loadEdit(filmes, this.table);
+    public Jogo loadEdit(){
+        return JogoUtilitario.loadEdit(jogos, this.table);
     }
 
-    public boolean Edit(Filme filme) {
+    public boolean Edit(Jogo jogo) {
        try {
             int tipo = ResultSet.TYPE_SCROLL_SENSITIVE;
             int concorrencia = ResultSet.CONCUR_UPDATABLE;
             pstdados = connection.prepareStatement(sqlalterar, tipo, concorrencia);
-            pstdados.setString(1, filme.getTitulo());
-            pstdados.setString(2, filme.getGenero());
-            pstdados.setInt(3, filme.getRanking());
-            pstdados.setBoolean(4, filme.getFoiAssistido());
-            pstdados.setInt(5, filme.getId());
+            pstdados.setString(1, jogo.getTitulo());
+            pstdados.setString(2, jogo.getGenero());
+            pstdados.setInt(3, jogo.getRanking());
+            pstdados.setInt(4, jogo.getHorasJogadas());
+            pstdados.setBoolean(5, jogo.getFoiHistoriaTerminada());
+            pstdados.setInt(6, jogo.getId());
             int resposta = pstdados.executeUpdate();
             pstdados.close();
             if (resposta == 1) {
@@ -95,15 +98,15 @@ public class FilmeDAO extends BDController {
     
      public void Remove(){
        Integer index = table.getSelectedRow();
-        Excluir(filmes.get(index));
+        Excluir(jogos.get(index));
     }
      
-    public boolean Excluir(Filme filme) {
+    public boolean Excluir(Jogo jogo) {
         try {
             int tipo = ResultSet.TYPE_SCROLL_SENSITIVE;
             int concorrencia = ResultSet.CONCUR_UPDATABLE;
             pstdados = connection.prepareStatement(sqlaexcluir, tipo, concorrencia);
-            pstdados.setInt(1, filme.getId());
+            pstdados.setInt(1, jogo.getId());
             int resposta = pstdados.executeUpdate();
             pstdados.close();
             if (resposta == 1) {
@@ -123,17 +126,18 @@ public class FilmeDAO extends BDController {
         try {
             int tipo = ResultSet.TYPE_SCROLL_SENSITIVE;
             int concorrencia = ResultSet.CONCUR_UPDATABLE;
-            pstdados = connection.prepareStatement(sqlconsultaFilme, tipo, concorrencia);
+            pstdados = connection.prepareStatement(sqlconsultaJogo, tipo, concorrencia);
             rsdados = pstdados.executeQuery();
-            filmes.clear();
+            jogos.clear();
             while(rsdados.next()){
-                Filme filme = new Filme(
+                Jogo jogo = new Jogo(
                 rsdados.getInt("id"),
                 rsdados.getString("titulo"),
                 rsdados.getString("genero"),
                 rsdados.getInt("ranking"),
-                rsdados.getBoolean("foiAssistido"));
-                filmes.add(filme);
+                rsdados.getInt("horasJogadas"),
+                rsdados.getBoolean("foiHistoriaTerminada"));
+                jogos.add(jogo);
             }
             return true;
         } catch (SQLException erro) {
@@ -143,8 +147,6 @@ public class FilmeDAO extends BDController {
     }
     
     public void Pesquisa(String name){
-        FilmeUtilitario.Pesquisa(name, filmes, this.table);
+        JogoUtilitario.Pesquisa(name, jogos, this.table);
     }
-
-    
 }

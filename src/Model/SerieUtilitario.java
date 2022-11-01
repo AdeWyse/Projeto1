@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author adeli
  */
-public class SerieUtiltario {
+public class SerieUtilitario {
     
      
     
@@ -33,13 +33,14 @@ public class SerieUtiltario {
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        model.setRowCount(0);
        for(int i = 0; i < serieList.size(); i++){
+           Integer id = serieList.get(i).getId();
            String titulo = serieList.get(i).getTitulo();
            String genero = serieList.get(i).getGenero();
            Integer ranking = serieList.get(i).getRanking();
            Integer numEpisodios = serieList.get(i).getNumEpisodios();
            Integer numEpisodiosAssistidos = serieList.get(i).getNumEpisodiosAssistidos();
            
-           Object[] data = {titulo, genero, ranking, numEpisodios, numEpisodiosAssistidos};
+           Object[] data = {id, titulo, genero, ranking, numEpisodios, numEpisodiosAssistidos};
            
          model.addRow(data);
        }
@@ -48,6 +49,7 @@ public class SerieUtiltario {
    
     public static ArrayList<Serie> Edit(Serie serieEditar, ArrayList<Serie> serieList, JTable table){
         Integer index = table.getSelectedRow();
+         serieList.get(index).setId(serieEditar.getId());
         serieList.get(index).setTitulo(serieEditar.getTitulo());
         serieList.get(index).setGenero(serieEditar.getGenero());
         serieList.get(index).setRanking(serieEditar.getRanking());

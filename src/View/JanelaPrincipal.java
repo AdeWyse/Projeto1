@@ -39,10 +39,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         textButton = new javax.swing.JButton();
         binaryText = new javax.swing.JButton();
         binaryText1 = new javax.swing.JButton();
-        filmesButton = new javax.swing.JButton();
         seriesButton = new javax.swing.JButton();
-        jogosButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        filmesButton = new javax.swing.JButton();
+        jogosButton = new javax.swing.JButton();
 
         SaveTypeDialog.setAlwaysOnTop(true);
         SaveTypeDialog.setMinimumSize(new java.awt.Dimension(525, 300));
@@ -103,17 +103,20 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        filmesButton.setText("Filmes");
-        filmesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filmesButtonActionPerformed(evt);
-            }
-        });
-
         seriesButton.setText("Séries");
         seriesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seriesButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("Gerenciador de Mídias");
+
+        filmesButton.setText("Filmes");
+        filmesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filmesButtonActionPerformed(evt);
             }
         });
 
@@ -124,25 +127,23 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Gerenciador de Mídias");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(filmesButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(seriesButton)
-                .addGap(109, 109, 109)
-                .addComponent(jogosButton)
-                .addGap(46, 46, 46))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(60, 60, 60))
+                .addGap(26, 72, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(filmesButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(seriesButton)
+                        .addGap(61, 61, 61)
+                        .addComponent(jogosButton)
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(60, 60, 60))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,34 +152,20 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(filmesButton)
                     .addComponent(seriesButton)
+                    .addComponent(filmesButton)
                     .addComponent(jogosButton))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void filmesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmesButtonActionPerformed
-        
-        JanelaFilme janelaFilme = new JanelaFilme(this.saveType);
-        janelaFilme.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_filmesButtonActionPerformed
 
     private void seriesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seriesButtonActionPerformed
         JanelaSerie janelaSerie = new JanelaSerie(this.saveType);
         janelaSerie.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_seriesButtonActionPerformed
-
-    private void jogosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogosButtonActionPerformed
-       JanelaJogo janelaJogo = new JanelaJogo(this.saveType);
-        janelaJogo.setVisible(true);
-        this.dispose();
-        
-    }//GEN-LAST:event_jogosButtonActionPerformed
 
     private void textButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textButtonActionPerformed
         this.saveType = 0;
@@ -194,6 +181,18 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         this.saveType = 2;
         SaveTypeDialog.dispose();
     }//GEN-LAST:event_binaryText1ActionPerformed
+
+    private void filmesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmesButtonActionPerformed
+       JanelaFilme janelaFilme = new JanelaFilme(this.saveType);
+        janelaFilme.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_filmesButtonActionPerformed
+
+    private void jogosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogosButtonActionPerformed
+        JanelaJogo janelaJogo = new JanelaJogo(this.saveType);
+        janelaJogo.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jogosButtonActionPerformed
 
     /**
      * @param args the command line arguments
