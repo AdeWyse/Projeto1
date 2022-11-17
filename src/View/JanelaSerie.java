@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 public class JanelaSerie extends janelaComponentes {
 
     int saveType;
+    JanelaPrincipal janelaPrincipal;
     BinarySerieController serieBinaryController;
     TextSerieController serieTextController;
     SerieDAO serieDAO;
@@ -24,10 +25,10 @@ public class JanelaSerie extends janelaComponentes {
     /**
      * Creates new form JanelaSerie
      */
-    public JanelaSerie(int saveType) {
+    public JanelaSerie(int saveType, JanelaPrincipal janelaPrincipal) {
         initComponents();
-
         this.saveType = saveType;
+        this.janelaPrincipal = janelaPrincipal;
         switch (saveType) {
             case 0:
                 serieTextController = new TextSerieController(tabela);
@@ -85,6 +86,7 @@ public class JanelaSerie extends janelaComponentes {
         buscaButton = new javax.swing.JButton();
         buscaInput = new javax.swing.JTextField();
 
+        dialogue.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogue.setMinimumSize(new java.awt.Dimension(500, 450));
 
         numEpisodesSlider.setMajorTickSpacing(200);
@@ -456,7 +458,7 @@ public class JanelaSerie extends janelaComponentes {
     }//GEN-LAST:event_novoButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-        VoltarPrincipal();
+        VoltarPrincipal(janelaPrincipal);
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed

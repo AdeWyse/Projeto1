@@ -41,8 +41,7 @@ public class janelaComponentes extends javax.swing.JFrame{
         });
     }
     
-    public void VoltarPrincipal(){
-        JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
+    public void VoltarPrincipal(JanelaPrincipal janelaPrincipal){
         this.dispose();
         janelaPrincipal.setVisible(true);
     }

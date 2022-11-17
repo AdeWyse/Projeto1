@@ -15,12 +15,17 @@ import Controller.BDController;
 public class JanelaPrincipal extends javax.swing.JFrame {
 
     int saveType = 1; // 0 -> texto, 1 -> binario, 2-> banco de dados
+    int janelaEscolha = 0;
     /**
      * Creates new form JanelaPrincipal
      */
     public JanelaPrincipal() {
         initComponents();
-        SaveTypeDialog.setVisible(true);
+        if(janelaEscolha == 0){
+           SaveTypeDialog.setVisible(true);
+           janelaEscolha++;
+
+        }
         Locale.setDefault(new Locale("pt", "BR"));
 
     }
@@ -43,6 +48,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         filmesButton = new javax.swing.JButton();
         jogosButton = new javax.swing.JButton();
+        escolhaButton = new javax.swing.JButton();
 
         SaveTypeDialog.setAlwaysOnTop(true);
         SaveTypeDialog.setMinimumSize(new java.awt.Dimension(568, 278));
@@ -138,6 +144,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        escolhaButton.setText("Escolha");
+        escolhaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escolhaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,6 +166,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jogosButton))
                     .addComponent(jLabel1))
                 .addGap(86, 86, 86))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(escolhaButton))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,16 +180,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     .addComponent(seriesButton)
                     .addComponent(filmesButton)
                     .addComponent(jogosButton))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(escolhaButton))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void seriesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seriesButtonActionPerformed
-        JanelaSerie janelaSerie = new JanelaSerie(this.saveType);
+        JanelaSerie janelaSerie = new JanelaSerie(this.saveType, this);
         janelaSerie.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_seriesButtonActionPerformed
 
     private void textButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textButtonActionPerformed
@@ -192,16 +209,20 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_binaryText1ActionPerformed
 
     private void filmesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmesButtonActionPerformed
-       JanelaFilme janelaFilme = new JanelaFilme(this.saveType);
+       JanelaFilme janelaFilme = new JanelaFilme(this.saveType, this);
         janelaFilme.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_filmesButtonActionPerformed
 
     private void jogosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogosButtonActionPerformed
-        JanelaJogo janelaJogo = new JanelaJogo(this.saveType);
+        JanelaJogo janelaJogo = new JanelaJogo(this.saveType, this);
         janelaJogo.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_jogosButtonActionPerformed
+
+    private void escolhaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolhaButtonActionPerformed
+        SaveTypeDialog.setVisible(true);
+    }//GEN-LAST:event_escolhaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,6 +262,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog SaveTypeDialog;
     private javax.swing.JButton binaryText;
     private javax.swing.JButton binaryText1;
+    private javax.swing.JButton escolhaButton;
     private javax.swing.JButton filmesButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 public class JanelaFilme extends janelaComponentes {
 
     int saveType;
+    JanelaPrincipal janelaPrincipal;
     BinaryFilmeController filmeBinaryController;
     TextFilmeController filmeTextController;
     FilmeDAO filmeDAO;
@@ -24,9 +25,10 @@ public class JanelaFilme extends janelaComponentes {
     /**
      * Creates new form JanelaFilme
      */
-    public JanelaFilme(int savetype) {
+    public JanelaFilme(int savetype, JanelaPrincipal janelaPrincipal) {
         initComponents();
         this.saveType = savetype;
+        this.janelaPrincipal = janelaPrincipal;
         switch (saveType) {
             case 0:
                 filmeTextController = new TextFilmeController(tabela);
@@ -425,7 +427,7 @@ public class JanelaFilme extends janelaComponentes {
     }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-        VoltarPrincipal();
+        VoltarPrincipal(janelaPrincipal);
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed

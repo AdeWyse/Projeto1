@@ -17,15 +17,17 @@ import javax.swing.JOptionPane;
 public class JanelaJogo extends janelaComponentes {
 
     int saveType;
+    JanelaPrincipal janelaPrincipal;
     BinaryJogoController jogoBinaryController;
     TextJogoController jogoTextController;
     JogoDAO jogoDAO;
     /**
      * Creates new form JanelaJogo
      */
-    public JanelaJogo(int saveType) {
+    public JanelaJogo(int saveType, JanelaPrincipal janelaPrincipal) {
         initComponents();
         this.saveType = saveType;
+        this.janelaPrincipal = janelaPrincipal;
         switch (saveType) {
             case 0:
                 jogoTextController = new TextJogoController(tabela);
@@ -440,7 +442,7 @@ public class JanelaJogo extends janelaComponentes {
     }//GEN-LAST:event_novoButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-        VoltarPrincipal();
+        VoltarPrincipal(janelaPrincipal);
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed
