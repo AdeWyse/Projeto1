@@ -1,3 +1,5 @@
+CREATE DATABASE postgres;
+
 CREATE TABLE jogo (
     id SERIAL PRIMARY KEY ,
     titulo char(50) ,
