@@ -9,7 +9,7 @@ package Model;
  * @author adeli
  */
 public abstract class Midia implements java.io.Serializable{
-    //private static long serialVersionUID = 2;
+    private static long serialVersionUID = 2;
 
     Integer id;
     String titulo;

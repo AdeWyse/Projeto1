@@ -6,8 +6,11 @@ package Controller;
 
 import java.sql.Connection;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 import javax.swing.JTable;
 
 /**
@@ -19,20 +22,47 @@ public class BDController {
     protected JTable table;
     protected Connection connection;
     public BDController(JTable table) {
-        connection = AcessaDB();
+        try{
+                    connection = AcessaDB();
+
+        }catch( IOException e){
+            System.out.println(e);
+        }catch(ClassNotFoundException e){
+            System.out.println(e);
+        }
         this.table = table;
     }
     
     
-    public Connection AcessaDB(){
+    public Connection AcessaDB() throws IOException, ClassNotFoundException {
         
         Connection conn = null;
         try {
+            
+            String url;
+            String username;
+            String password;
+    
             String path = System.getProperty(("user.dir")) + "\\src\\Util";
             File configFile =  new File (path, "config.properties");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres", "admin");
+            Properties props = new Properties();
+            
+           
+            FileInputStream in = new FileInputStream(configFile);
+            props.load(in);
+        
+            url = props.getProperty("jdbc.url");
+            username = props.getProperty("jdbc.username");
+            if (username == null) {
+                username = "";
+            }
+            password = props.getProperty("jdbc.password");
+            if (password == null) {
+                password = "";
+            }
+            conn = DriverManager.getConnection(url,username, password);
             conn.setAutoCommit(false);
-            System.out.println("Connected to the PostgreSQL server successfully.");
+            System.out.println("Conectou com o banco");
         } catch (SQLException erro) {
             System.out.println("Falha na conexao, comando sql = " + erro);
             return null;

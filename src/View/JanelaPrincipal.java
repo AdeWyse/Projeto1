@@ -190,7 +190,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void seriesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seriesButtonActionPerformed
         JanelaSerie janelaSerie = new JanelaSerie(this.saveType, this);
         janelaSerie.setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
     }//GEN-LAST:event_seriesButtonActionPerformed
 
     private void textButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textButtonActionPerformed
@@ -211,13 +211,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void filmesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmesButtonActionPerformed
        JanelaFilme janelaFilme = new JanelaFilme(this.saveType, this);
         janelaFilme.setVisible(true);
-        this.setVisible(false);
+      //  this.setVisible(false);
     }//GEN-LAST:event_filmesButtonActionPerformed
 
     private void jogosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogosButtonActionPerformed
         JanelaJogo janelaJogo = new JanelaJogo(this.saveType, this);
         janelaJogo.setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
     }//GEN-LAST:event_jogosButtonActionPerformed
 
     private void escolhaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolhaButtonActionPerformed
