@@ -1,0 +1,1 @@
+Os arquivos config.properties, driver do postgress e sql para a geração do banco estão na pasta Util

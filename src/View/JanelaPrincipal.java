@@ -51,8 +51,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         escolhaButton = new javax.swing.JButton();
 
         SaveTypeDialog.setAlwaysOnTop(true);
-        SaveTypeDialog.setMinimumSize(new java.awt.Dimension(568, 278));
-        SaveTypeDialog.setPreferredSize(new java.awt.Dimension(570, 290));
+        SaveTypeDialog.setMinimumSize(new java.awt.Dimension(400, 278));
+        SaveTypeDialog.setPreferredSize(new java.awt.Dimension(400, 234));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Como você quer salvar/acessar suas Mídias?");
@@ -112,7 +112,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(555, 234));
+        setMinimumSize(new java.awt.Dimension(400, 234));
+        setPreferredSize(new java.awt.Dimension(400, 234));
 
         seriesButton.setBackground(new java.awt.Color(153, 0, 153));
         seriesButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,7 +124,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Gerenciador de Mídias");
 
         filmesButton.setBackground(new java.awt.Color(0, 153, 51));
@@ -156,32 +157,34 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(filmesButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(seriesButton)
-                        .addGap(80, 80, 80)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jogosButton))
                     .addComponent(jLabel1))
-                .addGap(86, 86, 86))
+                .addContainerGap(170, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(escolhaButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(escolhaButton)
+                .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(seriesButton)
                     .addComponent(filmesButton)
                     .addComponent(jogosButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(escolhaButton))
+                .addGap(38, 38, 38)
+                .addComponent(escolhaButton)
+                .addGap(17, 17, 17))
         );
 
         pack();
